@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import axios from 'axios';
+import axios from 'axios';
 // import {REACT_APP_USERDATABASE} from "@env"
 
 export const AuthContext = createContext();
@@ -13,29 +13,29 @@ export const AuthProvider = ({ children }) => {
     const [hola, setHola] = useState('')
     console.log('holaaa', hola)
 
-    // const login = (email, password) => {
-    //     setIsLoading(true)
-        
-    //     // axios.post('http://127.0.0.1:80/api/login', {
-    //     //         email, 
-    //     //         password
-    //     // }).then(res => {
-    //     //     console.log('response data', res.data)
-    //     // }).catch(e => {
-    //     //     console.log(e)
-    //     // })
-
-    //     //setUserToken('esteeseltoken')
-    //     AsyncStorage.setItem('userToken', 'esteeseltoken')
-    //     setIsLoading(false)
-    // }
-
-    const login = async () => {
+    const login = (email, password) => {
         setIsLoading(true)
-        const response = await fetch('http://127.0.0.1:80/api/login')
-        const data = await response.json()
-        setHola(data)
+        
+        axios.post('http://127.0.0.1:80/api/login', {
+                email, 
+                password
+        }).then(res => {
+            console.log('response data', res.data)
+        }).catch(e => {
+            console.log(e)
+        })
+
+        //setUserToken('esteeseltoken')
+        AsyncStorage.setItem('userToken', 'esteeseltoken')
+        setIsLoading(false)
     }
+
+    // const login = async () => {
+    //     setIsLoading(true)
+    //     const response = await fetch('http://127.0.0.1:80/api/login')
+    //     const data = await response.json()
+    //     setHola(data)
+    // }
 
     const logout = () => {
         setIsLoading(true)
