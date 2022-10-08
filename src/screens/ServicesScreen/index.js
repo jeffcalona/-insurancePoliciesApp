@@ -57,7 +57,8 @@ const servicess = [
     logo: SoatLogo,
     logoDetail: SoatLogoBlue,
     status: 'comprar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: ''
   },
   {
     id: '3',
@@ -68,7 +69,8 @@ const servicess = [
     logo: ViajesLogo,
     logoDetail: ViajesLogoBlue,
     status: 'comprar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: 'https://www.suraenlinea.com/viajes/sura?codigoAsesor=xxxx'
   },
   {
     id: '4',
@@ -79,7 +81,8 @@ const servicess = [
     logo: ArriendoLogo,
     logoDetail: ArriendoLogoBlue,
     status: 'renovar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: 'https://www.suraenlinea.com/arrendamiento-digital/sura/cotizacion/calculadora?asesor=XXXX'
   },
   {
     id: '5',
@@ -90,7 +93,8 @@ const servicess = [
     logo: MotoLogo,
     logoDetail: MotoLogoBlue,
     status: 'renovar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: ''
   },
   {
     id: '6',
@@ -101,7 +105,8 @@ const servicess = [
     logo: AutomovilLogo,
     logoDetail: AutomovilLogoBlue,
     status: 'renovar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: ''
   },
   {
     id: '7',
@@ -112,7 +117,8 @@ const servicess = [
     logo: SegurosVoluntariosLogo,
     logoDetail: SegurosVoluntariosLogoBlue,
     status: 'comprar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: 'https://www.suraenlinea.com/home?asesor=XXXXX#motos'
   },
   {
     id: '8',
@@ -123,7 +129,8 @@ const servicess = [
     logo: PlanComplementarioLogo,
     logoDetail: PlanComplementarioLogoBlue,
     status: 'comprar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: 'https://www.suraenlinea.com/pac-digital/sura/cotizar/datos?asesor=XXXX'
   },
   {
     id: '9',
@@ -134,7 +141,8 @@ const servicess = [
     logo: CasaLogo,
     logoDetail: CasaLogoBlue,
     status: 'renovar',
-    backgroundImg: BackgroundCoberturasJ
+    backgroundImg: BackgroundCoberturasJ,
+    url: ''
   }
 ]
 
@@ -157,7 +165,7 @@ const ServicesScreen = () => {
   return (
     <View style={styles.servicesScreen}>
       <View style={styles.servicesScreen_}>
-        <FlatList data={servicess} keyExtractor={(item) => item.id} renderItem={({item}) => <ServicesCardScreen status={item.status} logo={item.logo} name={item.name} description={item.description} price={item.price} id={item.id} descriptionL={item.descriptionL} backgroundImg={item.backgroundImg} logoDetail={item.logoDetail} planes={item.planes} />} showsVerticalScrollIndicator={false} />
+        <FlatList data={servicess} keyExtractor={(item) => item.id} renderItem={({item}) => <ServicesCardScreen status={item.status} logo={item.logo} name={item.name} description={item.description} price={item.price} id={item.id} descriptionL={item.descriptionL} backgroundImg={item.backgroundImg} logoDetail={item.logoDetail} planes={item.planes} url={item.url}/>} showsVerticalScrollIndicator={false} />
       </View>
     </View>
   )

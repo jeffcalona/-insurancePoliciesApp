@@ -1,8 +1,8 @@
-import React from "react";
-import { Image } from 'react-native';
+import React, { useContext } from "react";
+import { ActivityIndicator, Image, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import { Home as HomeIcon, ClipboardText, Profile as ProfileIcon, AddCircle } from 'iconsax-react-native';
@@ -16,26 +16,44 @@ import Profile from "./src/screens/Profile";
 import ServicesScreen from "./src/screens/ServicesScreen";
 import CoberturaJuridica from "./src/screens/CoberturaJuridica";
 import ServicesDetail from "./src/screens/ServicesDetail";
+import FormCoberturaJuridica from "./src/screens/FormCoberturaJuridica";
+import FormPolicies from "./src/screens/FormPolicies";
+import Login from "./src/screens/Login";
+import Register from "./src/screens/Register";
+import OnBoarding from "./src/screens/OnBoarding";
+import { AuthContext } from "./src/Context/AuthContext";
 
 //staks
 const ServicesScreenStack = createNativeStackNavigator()
-
 function Stacks() {
     return (
-        <ServicesScreenStack.Navigator>
+        <ServicesScreenStack.Navigator >
             <ServicesScreenStack.Screen name="AgregarServiciosStack" component={ServicesScreen} />
             <ServicesScreenStack.Screen name="DetailStack" component={ServicesDetail} />
+            <ServicesScreenStack.Screen name="FormCoberturaJuridica" component={FormCoberturaJuridica} />
+            <ServicesScreenStack.Screen name="FormPolicies" component={FormPolicies} />
         </ServicesScreenStack.Navigator>
+    )
+}
+
+//onBoarding
+const Stack = createNativeStackNavigator()
+function AuthStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='OnBoarding' component={OnBoarding} />
+            <Stack.Screen name='Login' component={Login} />
+            <Stack.Screen name='Register' component={Register} />
+        </Stack.Navigator>
     )
 }
 
 //Tabs
 const Tab = createBottomTabNavigator()
-
 function Tabs() {
     return (
         <Tab.Navigator
-            initialRouteName='Profile'
+            initialRouteName='Home'
             screenOptions={{
                 tabBarActiveTintColor: '#1B7BCC',
                 tabBarInactiveTintColor: 'rgba(27, 123, 204, .3)',
@@ -57,14 +75,13 @@ function Tabs() {
                 )
             }} />
             <Tab.Screen name="CoberturaJuridica" component={CoberturaJuridica} options={{
-                tabBarLabel: 'Cobertura',
+                tabBarLabel: 'Coberturas',
                 tabBarIcon: ({ focused }) => (
                   focused ? 
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: 1 }} />
                   :
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: .3 }} />
-                ),
-                headerShown: false
+                )
             }} />
             <Tab.Screen name="AgregarServicios" component={Stacks} options={({ route }) => ({
                 tabBarStyle: {
@@ -93,8 +110,7 @@ function Tabs() {
                 tabBarLabel: 'Perfil',
                 tabBarIcon: ({ color }) => (
                   <ProfileIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
-                ),
-                headerShown: false
+                )
             }} />
         </Tab.Navigator>
     )
@@ -106,14 +122,38 @@ const getTabBarVisibility = (route) => {
     switch (routeName) {
         case 'DetailStack':
             return 'none';
+            break
+        case 'FormCoberturaJuridica':
+            return 'none';
+            break
+        case 'FormPolicies':
+            return 'none';
+            break
         default: 'flex'
     }
 }
 
+
 export default function Navigation() {
+
+    //Context
+    const {isLoading, userToken} = useContext(AuthContext)
+
+    if (isLoading) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size={'large'} />
+            </View>
+        )
+    }
+
     return (
         <NavigationContainer>
-            <Tabs />
+            {userToken !== null ?
+                <Tabs />
+                :
+                <AuthStack />
+            }
         </NavigationContainer>
     )
 }

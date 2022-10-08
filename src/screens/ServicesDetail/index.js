@@ -49,17 +49,17 @@ const ServicesDetail = ({ route }) => {
                 </TouchableOpacity>
               </View>
               {basicPlan && 
-                <CardPlans titleDescription={'Descripción'} description={route.params?.planes[0].planDescription} price={route.params?.planes[0].planPrice} />
+                <CardPlans titleDescription={'Descripción'} description={route.params?.planes[0].planDescription} price={route.params?.planes[0].planPrice} onPress={() => navigation.navigate('FormCoberturaJuridica', { plan: 'Básico', price: route.params?.planes[0].planPrice, backgroundImg: route.params?.backgroundImg, name: route.params?.name, logoDetail: route.params?.logoDetail })} />
               }
               {plusPlan && 
-                <CardPlans titleDescription={'Adicional'} description={route.params?.planes[1].planDescription} price={route.params?.planes[1].planPrice} />
+                <CardPlans titleDescription={'Adicional'} description={route.params?.planes[1].planDescription} price={route.params?.planes[1].planPrice} onPress={() => navigation.navigate('FormCoberturaJuridica', { plan: 'Plus', price: route.params?.planes[1].planPrice, backgroundImg: route.params?.backgroundImg, name: route.params?.name, logoDetail: route.params?.logoDetail })} />
               }
             </View>
           </View>
           :
           <View style={styles.servicesDetail_container_}>
             <View style={{height: '100%'}}>
-                <CardPlans titleDescription={'Descripción'} description={route.params?.descriptionL} price={route.params?.price} />
+                <CardPlans titleDescription={'Descripción'} description={route.params?.descriptionL} price={route.params?.price} onPress={() => navigation.navigate('FormPolicies', { price: route.params?.price, backgroundImg: route.params?.backgroundImg, name: route.params?.name, logoDetail: route.params?.logoDetail, url: route.params?.url })} />
             </View>
           </View>
         }

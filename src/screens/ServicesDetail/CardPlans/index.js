@@ -1,14 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const CardPlans = ({ titleDescription, description, price }) => {
+const CardPlans = ({ titleDescription, description, price, onPress }) => {
   return (
     <>
       <Text style={styles.servicesDetail_containerTitleDescription}>{titleDescription}</Text>
       <Text>{description}</Text>
       <View style={styles.servicesDetail_containerPrice}>
         <Text style={styles.servicesDetail_containerPriceText}>${price}</Text>
-        <TouchableOpacity style={styles.servicesDetail_containerPriceButton}>
+        <TouchableOpacity onPress={onPress} style={styles.servicesDetail_containerPriceButton}>
           <Text style={styles.servicesDetail_containerPriceButtonText}>Agregar</Text>
         </TouchableOpacity>
       </View>
