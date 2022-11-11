@@ -1,82 +1,37 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { NotificationBing } from 'iconsax-react-native'
+import { NotificationBing, Profile as ProfileIcon } from 'iconsax-react-native'
 import PolizasCard from '../../components/Polizas/PolizasCard'
-import BlindajeLogo from '../../Assets/Icons/BlindajeLogo.png'
-import ViajesLogoBlack from '../../Assets/Icons/ViajesLogoBlack.png'
-import SoatLogoBlack from '../../Assets/Icons/SoatLogoBlack.png'
-import SaludLogoBlack from '../../Assets/Icons/SaludLogoBlack.png'
-import AutomovilLogoBlack from '../../Assets/Icons/AutomovilLogoBlack.png'
-import MotoLogoBlack from '../../Assets/Icons/MotoLogoBlack.png'
-import CasaLogoBlack from '../../Assets/Icons/CasaLogoBlack.png'
+import { AuthContext } from '../../Context/AuthContext'
+import { REACT_APP_USERDATABASE } from '@env'
+import axios from 'axios'
+import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import Profile from '../Profile'
 
-const policiess = [
-  {
-      id: '1',
-      logo: BlindajeLogo,
-      name: 'Nombre Paciente',
-      description: 'Procedimiento',
-      active: true
-  },
-  {
-      id: '2',
-      logo: BlindajeLogo,
-      name: 'Nombre Paciente',
-      description: 'Procedimiento',
-      active: true
-  },
-  {
-      id: '3',
-      logo: ViajesLogoBlack,
-      name: 'Viajes',
-      description: 'Descripción corta',
-      active: true
-  },
-  {
-      id: '4',
-      logo: SoatLogoBlack,
-      name: 'Soat',
-      description: 'Descripción corta',
-      active: false
-  },
-  {
-      id: '5',
-      logo: AutomovilLogoBlack,
-      name: 'Automóvil',
-      description: 'Descripción corta',
-      active: true
-  },
-  {
-      id: '6',
-      logo: SaludLogoBlack,
-      name: 'Salud',
-      description: 'Descripción corta',
-      active: true
-  },
-  {
-      id: '7',
-      logo: MotoLogoBlack,
-      name: 'Moto',
-      description: 'Descripción corta',
-      active: true
-  },
-  {
-      id: '8',
-      logo: CasaLogoBlack,
-      name: 'Casa',
-      description: 'Descripción corta',
-      active: true
-  }
-]
 
 const MyPolicies = () => {
+  const {userData} = useContext(AuthContext)
   const Navigation = useNavigation()
+  const bottomSheetModalProfileRef = useRef(null)
+  const snapModalPoint = ["100"]
+  
+  const [allCobertures, setAllCobertures] = useState([])
+
+  const handlerModal = () => {
+    bottomSheetModalProfileRef.current?.present()
+  }
 
   useEffect(() => {
     Navigation.setOptions({
+      headerTitle: 'Mis Pólizas',
       headerLeft: () => (
         <NotificationBing color={Navigation.color} variant="Linear" size={30} style={{ marginLeft: 20 }} />
+      ),
+      headerRight: () => (
+        <TouchableOpacity onPress={handlerModal}>
+          <ProfileIcon color={Navigation.color} variant="Linear" size={30} style={{ marginRight: 20 }} />
+        </TouchableOpacity>
       ),
       headerStyle: {
         borderBottomColor: 'white',
@@ -85,12 +40,27 @@ const MyPolicies = () => {
     })
   }, [Navigation])
 
+
+  useEffect(() => {
+      axios.get(`${REACT_APP_USERDATABASE}/get/cobertura/${userData.id}`)
+      .then(res => {
+          setAllCobertures(res.data.cobertura)
+      }).catch(e => {
+          console.log(e)
+      })
+  }, [])
+
   return (
-    <View style={styles.myPolices}>
-      <View style={styles.myPolices_}>
-        <FlatList data={policiess} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard img={item.logo} name={item.name} description={item.description} active={item.active} />} showsVerticalScrollIndicator={false} />
+    <BottomSheetModalProvider>
+      <BottomSheetModal ref={bottomSheetModalProfileRef} index={0} snapPoints={snapModalPoint}>
+        <Profile />
+      </BottomSheetModal>
+      <View style={styles.myPolices}>
+        <View style={styles.myPolices_}>
+          <FlatList data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} description={item.plan} />} showsVerticalScrollIndicator={false} />
+        </View>
       </View>
-    </View>
+    </BottomSheetModalProvider>
   )
 }
 

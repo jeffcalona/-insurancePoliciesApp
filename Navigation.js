@@ -5,23 +5,25 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
-import { Home as HomeIcon, ClipboardText, Profile as ProfileIcon, AddCircle } from 'iconsax-react-native';
+import { Home as HomeIcon, ClipboardText, Profile as ProfileIcon, AddCircle, More as MoreIcon } from 'iconsax-react-native';
 
 import BlindajeLogo from './src/Assets/Icons/BlindajeLogo.png'
 
 //screens
 import Home from './src/screens/Home'
 import MyPolicies from './src/screens/MyPolicies'
-import Profile from "./src/screens/Profile";
 import ServicesScreen from "./src/screens/ServicesScreen";
 import CoberturaJuridica from "./src/screens/CoberturaJuridica";
 import ServicesDetail from "./src/screens/ServicesDetail";
 import FormCoberturaJuridica from "./src/screens/FormCoberturaJuridica";
 import FormPolicies from "./src/screens/FormPolicies";
 import Login from "./src/screens/Login";
+import ShoppingCartCobertura from "./src/screens/PaimentMethod";
 import Register from "./src/screens/Register";
 import OnBoarding from "./src/screens/OnBoarding";
 import { AuthContext } from "./src/Context/AuthContext";
+import PaimentData from "./src/screens/PaimentData";
+import More from './src/screens/More'
 
 //staks
 const ServicesScreenStack = createNativeStackNavigator()
@@ -32,6 +34,8 @@ function Stacks() {
             <ServicesScreenStack.Screen name="DetailStack" component={ServicesDetail} />
             <ServicesScreenStack.Screen name="FormCoberturaJuridica" component={FormCoberturaJuridica} />
             <ServicesScreenStack.Screen name="FormPolicies" component={FormPolicies} />
+            <ServicesScreenStack.Screen name="PaimentMethod" component={ShoppingCartCobertura} />
+            <ServicesScreenStack.Screen name='PaimentData' component={PaimentData} />
         </ServicesScreenStack.Navigator>
     )
 }
@@ -57,6 +61,7 @@ function Tabs() {
             screenOptions={{
                 tabBarActiveTintColor: '#1B7BCC',
                 tabBarInactiveTintColor: 'rgba(27, 123, 204, .3)',
+                unmountOnBlur: true,
                 tabBarStyle: {
                     borderTopColor: 'white',
                     shadowOffset: {height: -3},
@@ -106,10 +111,10 @@ function Tabs() {
                   <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 )
             }} />
-            <Tab.Screen name="Profile" component={Profile} options={{
-                tabBarLabel: 'Perfil',
+            <Tab.Screen name="Más" component={More} options={{
+                tabBarLabel: 'Más',
                 tabBarIcon: ({ color }) => (
-                  <ProfileIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
+                  <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 )
             }} />
         </Tab.Navigator>
@@ -129,6 +134,12 @@ const getTabBarVisibility = (route) => {
         case 'FormPolicies':
             return 'none';
             break
+        case 'PaimentMethod':
+            return 'none';
+            break
+        case 'PaimentData':
+            return 'none';
+            break;
         default: 'flex'
     }
 }

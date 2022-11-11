@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { WebView } from 'react-native-webview'
 import { useNavigation } from '@react-navigation/native'
+import { AuthContext } from '../../Context/AuthContext'
 
 const FormPolicies = ({ route }) => {
   const navigation = useNavigation()
@@ -13,6 +14,10 @@ const FormPolicies = ({ route }) => {
       headerBackTitleVisible: false
     })
   }, [navigation])
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <View style={styles.formPolices}>

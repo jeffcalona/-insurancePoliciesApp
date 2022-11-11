@@ -1,36 +1,24 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import BlindajeLogo from '../../../Assets/Icons/BlindajeLogo.png'
 
-const PolizasCard = ({ img, name, description, active }) => {
+const PolizasCard = ({ name, description }) => {
   return (
     <View style={styles.polizasCard}>
         <View style={styles.polizasCard_}>
-            {active === true ?
-                <View style={styles.polizasCard_imgActive}>
-                    <Image style={styles.polizasCard_img} source={img} />
-                </View>
-                :
-                <View style={styles.polizasCard_imgDisabled}>
-                    <Image style={styles.polizasCard_img} source={img} />
-                </View>
-            }
+            <View style={styles.polizasCard_imgActive}>
+                <Image style={styles.polizasCard_img} source={BlindajeLogo} />
+            </View>
             <View style={styles.polizasCard_text}>
                 <View>
                     <Text>{name}</Text>
                     <Text>{description}</Text>
                 </View>
-                <View style={styles.polizasCard_textOptions}>
-                    {active === true ? 
-                        <View style={styles.polizasCard_textOptions_}>
-                            <View style={styles.polizasCard_textActive} />
-                            <Text style={styles.polizasCard_textActive_} >Activa</Text>                    
-                        </View>
-                        :
-                        <View style={styles.polizasCard_textOptions_}>
-                            <View style={styles.polizasCard_textDisabled} />
-                            <Text style={styles.polizasCard_textDisabled_} >Inactiva</Text>
-                        </View>
-                    }
+                <View>
+                    <View style={styles.polizasCard_textOptions_}>
+                        <View style={styles.polizasCard_textActive} />
+                        <Text style={styles.polizasCard_textActive_} >Activa</Text>                    
+                    </View>
                 </View>
             </View>
         </View>

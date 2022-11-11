@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const ServicesCardScreen = ({ status, logo, name, description, price, id, descriptionL, backgroundImg, logoDetail, planes, url }) => {
+const ServicesCardScreen = ({ status, logo, name, description, price, id, descriptionL, backgroundImg, logoDetail, planes, procedimientos, url }) => {
 
     const navigation = useNavigation()
 
@@ -26,11 +26,11 @@ const ServicesCardScreen = ({ status, logo, name, description, price, id, descri
                     </Text>
                 </View>
                 {status === 'comprar' ? 
-                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, url: url })} style={styles.servicesCardCard_textActive}>
+                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, procedimientos: procedimientos, url: url })} style={styles.servicesCardCard_textActive}>
                         <Text style={styles.servicesCardCard_textButton} >Comprar</Text>                    
                     </TouchableOpacity>
                     :
-                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, url: url })} style={styles.servicesCardCard_textDisabled}>
+                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, procedimientos: procedimientos, logo: logo, logoDetail: logoDetail, planes: planes, url: url })} style={styles.servicesCardCard_textDisabled}>
                         <Text style={styles.servicesCardCard_textButton} >Renovar</Text>
                     </TouchableOpacity>
                 }
