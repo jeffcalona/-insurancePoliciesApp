@@ -1,7 +1,7 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useRef } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { NotificationBing } from 'iconsax-react-native'
+import { NotificationBing, Profile as ProfileIcon } from 'iconsax-react-native'
 import CoberturaLogoWhite from '../../Assets/Icons/CoberturaLogoWhite.png'
 import SoatLogo from '../../Assets/Icons/SoatLogo.png'
 import ViajesLogo from '../../Assets/Icons/ViajesLogo.png'
@@ -22,6 +22,8 @@ import SegurosVoluntariosLogoBlue from '../../Assets/Icons/SegurosVoluntariosLog
 import PlanComplementarioLogoBlue from '../../Assets/Icons/PlanComplementarioLogoBlue.png'
 import CasaLogoBlue from '../../Assets/Icons/CasaLogoBlue.png'
 import ServicesCardScreen from '../../components/ServicesCardScreen'
+import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import Profile from '../Profile'
 
 const servicess = [
   {
@@ -33,18 +35,42 @@ const servicess = [
     logoDetail: CoberturaLogoBlue,
     status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
-    planes: [
+    procedimientos: [
       {
-        planId: '1',
-        planName: 'Básico',
-        planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-        planPrice: '150.000'
+        estetico: {
+          planes: [
+            {
+              planId: '1',
+              planName: 'Básico',
+              planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              planPrice: '100.000'
+            },
+            {
+              planId: '2',
+              planName: 'Plus',
+              planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centu.',
+              planPrice: '180.000'
+            }
+          ]
+        }
       },
       {
-        planId: '2',
-        planName: 'Plus',
-        planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centu.',
-        planPrice: '200.000'
+        quirurgico: {
+          planes: [
+            {
+              planId: '1',
+              planName: 'Básico',
+              planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              planPrice: '150.000'
+            },
+            {
+              planId: '2',
+              planName: 'Plus',
+              planDescription: 'Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centu.',
+              planPrice: '200.000'
+            }
+          ]
+        }
       }
     ]
   },
@@ -80,7 +106,7 @@ const servicess = [
     price: '250.000',
     logo: ArriendoLogo,
     logoDetail: ArriendoLogoBlue,
-    status: 'renovar',
+    status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
     url: 'https://www.suraenlinea.com/arrendamiento-digital/sura/cotizacion/calculadora?asesor=XXXX'
   },
@@ -92,7 +118,7 @@ const servicess = [
     price: '100.000',
     logo: MotoLogo,
     logoDetail: MotoLogoBlue,
-    status: 'renovar',
+    status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
     url: ''
   },
@@ -104,7 +130,7 @@ const servicess = [
     price: '200.000',
     logo: AutomovilLogo,
     logoDetail: AutomovilLogoBlue,
-    status: 'renovar',
+    status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
     url: ''
   },
@@ -140,7 +166,7 @@ const servicess = [
     price: '100.000',
     logo: CasaLogo,
     logoDetail: CasaLogoBlue,
-    status: 'renovar',
+    status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
     url: ''
   }
@@ -148,26 +174,42 @@ const servicess = [
 
 const ServicesScreen = () => {
   const Navigation = useNavigation()
+  const bottomSheetModalProfileRef = useRef(null)
+  const snapModalPoint = ["100"]
+
+  const handlerModal = () => {
+    bottomSheetModalProfileRef.current?.present()
+  }
 
   useEffect(() => {
     Navigation.setOptions({
       headerLeft: () => (
         <NotificationBing color={Navigation.color} variant="Linear" size={30} style={{ marginLeft: 20 }} />
       ),
+      headerRight: () => (
+        <TouchableOpacity onPress={handlerModal}>
+          <ProfileIcon color={Navigation.color} variant="Linear" size={30} style={{ marginRight: 20 }} />
+        </TouchableOpacity>
+      ),
       headerTitle: 'Agregar Servicios',
       headerStyle: {
-        shadowOpacity: 0,
-        borderBottomColor: 'white'
+        borderBottomColor: 'white',
+        shadowOpacity: 0, 
       }
     })
   }, [Navigation])
 
   return (
-    <View style={styles.servicesScreen}>
-      <View style={styles.servicesScreen_}>
-        <FlatList data={servicess} keyExtractor={(item) => item.id} renderItem={({item}) => <ServicesCardScreen status={item.status} logo={item.logo} name={item.name} description={item.description} price={item.price} id={item.id} descriptionL={item.descriptionL} backgroundImg={item.backgroundImg} logoDetail={item.logoDetail} planes={item.planes} url={item.url}/>} showsVerticalScrollIndicator={false} />
+    <BottomSheetModalProvider>
+      <View style={styles.servicesScreen}>
+        <BottomSheetModal ref={bottomSheetModalProfileRef} index={0} snapPoints={snapModalPoint}>
+          <Profile />
+        </BottomSheetModal>
+        <View style={styles.servicesScreen_}>
+          <FlatList data={servicess} keyExtractor={(item) => item.id} renderItem={({item}) => <ServicesCardScreen status={item.status} logo={item.logo} name={item.name} description={item.description} price={item.price} id={item.id} descriptionL={item.descriptionL} backgroundImg={item.backgroundImg} logoDetail={item.logoDetail} planes={item.planes} procedimientos={item.procedimientos} url={item.url}/>} showsVerticalScrollIndicator={false} />
+        </View>  
       </View>
-    </View>
+    </BottomSheetModalProvider>
   )
 }
 

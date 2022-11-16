@@ -1,19 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ImageBackground, StyleSheet, View, Text } from 'react-native'
 import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
 import AuthComponent from '../../components/AuthComponent'
-import { MessageText, PasswordCheck } from 'iconsax-react-native'
-import AuthComponentInput from '../../components/AuthComponentInput'
-import AuthComponentButton from '../../components/AuthComponentButton'
-import { AuthContext } from '../../Context/AuthContext'
-
-const data = [
-  {id: '1', title: 'Email', icon: MessageText, placeHolder: 'Correo Electrónico', isPassword: false},
-  {id: '2', title: 'Contraseña', icon: PasswordCheck, placeHolder: '************', isPassword: true},
-]
+import AuthComponentLogin from '../../components/AuthComponentLogin'
 
 const Login = () => {
-  const {login} = useContext(AuthContext)
+
   return (
     <ImageBackground source={AuthBackgroundImg} style={styles.authBackgroundImg}>
       <View style={styles.login}>
@@ -23,13 +15,8 @@ const Login = () => {
         <View style={styles.loginContent_}>
           <AuthComponent autContentTitle='Bienveniedo de Vuelta' />
           <View style={styles.loginContent_inputs}>
-            {data.map((newData) => {
-              return (
-                <AuthComponentInput key={newData.id} titleInput={newData.title} iconInput={<newData.icon size='20' color='black' />} inputPlaceholder={newData.placeHolder} isPassword={newData.isPassword} />
-              )
-            })}
+            <AuthComponentLogin />
           </View>
-          <AuthComponentButton onPress={() => {login()}} buttonTitle='Iniciar sesión' />
         </View>
       </View>
     </ImageBackground>

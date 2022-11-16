@@ -2,17 +2,7 @@ import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import React from 'react'
 import AuthComponent from '../../components/AuthComponent'
 import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
-import AuthComponentInput from '../../components/AuthComponentInput'
-import { User, Hashtag, MessageText, PasswordCheck } from 'iconsax-react-native'
-import AuthComponentButton from '../../components/AuthComponentButton'
-
-const data = [
-  {id: '1', title: 'Nombre', icon: User, placeHolder: 'Combre Completo', isPassword: false},
-  {id: '2', title: 'Identificación', icon: Hashtag, placeHolder: 'Número de Identificación', isPassword: false},
-  {id: '3', title: 'Email', icon: MessageText, placeHolder: 'Correo Electrónico', isPassword: false},
-  {id: '4', title: 'Contraseña', icon: PasswordCheck, placeHolder: '************', isPassword: true},
-  {id: '5', title: 'Repita Contraseña', icon: PasswordCheck, placeHolder: '************', isPassword: true}
-]
+import AuthComponentRegister from '../../components/AuthComponentRegister'
 
 const Register = () => {
   return (
@@ -24,13 +14,8 @@ const Register = () => {
         <View style={styles.loginContent_}>
           <AuthComponent autContentTitle='Nuevo Usuario' />
           <View style={styles.loginContent_inputs}>
-            {data.map((newData) => {
-              return (
-                <AuthComponentInput key={newData.id} titleInput={newData.title} iconInput={<newData.icon size='20' color='black' />} inputPlaceholder={newData.placeHolder} isPassword={newData.isPassword} />
-              )
-            })}
+            <AuthComponentRegister />
           </View>
-          <AuthComponentButton buttonTitle='Regístrate' />
         </View>
       </View>
     </ImageBackground>

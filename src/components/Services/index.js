@@ -29,13 +29,13 @@ const servicess= [
 ]
 
 const Services = () => {
-    const navigatio = useNavigation()
+    const navigation = useNavigation()
   return (
     <View style={styles.services}>
         <View style={styles.services_}>
             <View style={styles.services_header}>
                 <Text>Nuestros Servicios</Text>
-                <TouchableOpacity onPress={() => navigatio.navigate('AgregarServiciosStack')} style={styles.services_headerButton}>
+                <TouchableOpacity onPress={() => navigation.navigate('AgregarServicios')} style={styles.services_headerButton}>
                     <Text style={styles.services_headerButtonText}>Ver Todos</Text>
                 </TouchableOpacity>
             </View>
