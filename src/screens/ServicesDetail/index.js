@@ -7,6 +7,7 @@ import axios from 'axios'
 import {REACT_APP_USERDATABASE} from '@env'
 import { AuthContext } from '../../Context/AuthContext'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import CardPlansWebView from './CardPlansWebView'
 
 const ServicesDetail = ({ route }) => {
   const navigation = useNavigation()
@@ -90,10 +91,10 @@ const ServicesDetail = ({ route }) => {
                     </TouchableOpacity>
                   </View>
                   {basicPlan && 
-                    <CardPlans titleDescription={'Descripción'} description={route.params?.procedimientos[0].estetico.planes[0].planDescription} price={route.params?.procedimientos[0].estetico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail}/>
+                    <CardPlans idN={route.params?.id} titleDescription={'Descripción'} description={route.params?.procedimientos[0].estetico.planes[0].planDescription} price={route.params?.procedimientos[0].estetico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo}/>
                   }
                   {plusPlan && 
-                    <CardPlans titleDescription={'Adicional'} description={route.params?.procedimientos[0].estetico.planes[1].planDescription} price={route.params?.procedimientos[0].estetico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} />
+                    <CardPlans idN={route.params?.id} titleDescription={'Adicional'} description={route.params?.procedimientos[0].estetico.planes[1].planDescription} price={route.params?.procedimientos[0].estetico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
                   }
                 </View>
                 :
@@ -107,10 +108,10 @@ const ServicesDetail = ({ route }) => {
                     </TouchableOpacity>
                   </View>
                   {basicPlan && 
-                    <CardPlans titleDescription={'Descripción'} description={route.params?.procedimientos[1].quirurgico.planes[0].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} />
+                    <CardPlans idN={route.params?.id} titleDescription={'Descripción'} description={route.params?.procedimientos[1].quirurgico.planes[0].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
                   }
                   {plusPlan && 
-                    <CardPlans titleDescription={'Adicional'} description={route.params?.procedimientos[1].quirurgico.planes[1].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} />
+                    <CardPlans idN={route.params?.id} titleDescription={'Adicional'} description={route.params?.procedimientos[1].quirurgico.planes[1].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
                   }
                 </View>
               }
@@ -118,7 +119,7 @@ const ServicesDetail = ({ route }) => {
             :
             <View style={styles.servicesDetail_container_}>
               <View style={{height: '100%'}}>
-                  <CardPlans titleDescription={'Descripción'} description={route.params?.descriptionL} price={route.params?.price} onPress={otherServices} />
+                  <CardPlansWebView titleDescription={'Descripción'} description={route.params?.descriptionL} price={route.params?.price} backgroundImg={route.params?.backgroundImg} name={route.params?.name} logoDetail={route.params?.logoDetail} url={route.params?.url} nameU= {userData.name} serviceU= {route.params?.name} logoIcon={route.params?.log} />
               </View>
             </View>
           }
@@ -150,16 +151,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   servicesDetail_Title: {
-    marginTop: 130,
+    marginTop: 110,
     color: 'white',
     fontSize: 30,
     fontWeight: '800',
-    maxWidth: 245,
+    maxWidth: 280,
     textAlign: 'center',
     lineHeight: 30
   },
   servicesDetail_container: {
-    height: '65%',
+    height: '71%',
     width: '100%',
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    top: '26%'
+    top: '21%'
   },
   servicesDetail_logoImg: {
     width: 80,

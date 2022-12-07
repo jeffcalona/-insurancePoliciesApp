@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 const servicess= [
     {
         id: '1',
-        name: 'tu shoat aqui',
+        name: 'tu soat aqui',
         description: '8 Productos',
         icon: SoatLogo
     },
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     services: {
         width: '90%',
         height: 215,
-        marginTop: 20,
+        marginTop: 10,
     },
     services_: {
         alignItems: 'center'

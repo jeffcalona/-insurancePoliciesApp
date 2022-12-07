@@ -1,30 +1,40 @@
 import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { Record, RecordCircle } from 'iconsax-react-native'
-import { useNavigation } from '@react-navigation/native'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import TermsAndConditionsCobertura from '../../../components/TermsAndConditionsCobertura'
+import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
+import {REACT_APP_USERDATABASE} from '@env'
 
-const CardPlans = ({ titleDescription, description, planN, procedureTipeN, price, backgroundImgN, nameN, logoDetailN, logoIcon, idN }) => {
+const CardPlansWebView = ({ titleDescription, description, price, backgroundImg, name, logoDetail, url, nameU, serviceU }) => {
   const navigation = useNavigation()
   const bottomSheetModalTermRef = useRef(null)
   const snapModalPoint = ["65"]
 
   const [accept, setAccept] = useState(false)
 
-  const onPressAdd = () => {
-    accept === true ?
-    navigation.navigate('FormCoberturaJuridica', {id: idN, plan: planN, procedureTipe: procedureTipeN, price: price, backgroundImg: backgroundImgN, name: nameN, logoDetail: logoDetailN, logoIcon: logoIcon})
-    :
-    Alert.alert(
-      "Acepta Términos y Condiciones",
-      "Para continuar debe aceptar los terminos y condiciones",
-      [
-        {
-          text: "Ok"
-        }
-      ]
-    )
+  const onPressAdd = async () => {
+    if(accept === true) {
+      navigation.navigate('FormPolicies', { price: price, backgroundImg: backgroundImg, name: name, logoDetail: logoDetail, url: url})
+      
+      await axios.post(`${REACT_APP_USERDATABASE}/update/trackingService/${name}`, {
+        nameU: nameU,
+        service: serviceU
+      })
+
+
+    } else {
+      Alert.alert(
+        "Acepta Términos y Condiciones",
+        "Para continuar debe aceptar los terminos y condiciones",
+        [
+          {
+            text: "Ok"
+          }
+        ]
+      )
+    }
   }
 
   const handlerModal = () => {
@@ -67,7 +77,7 @@ const CardPlans = ({ titleDescription, description, planN, procedureTipeN, price
   )
 }
 
-export default CardPlans
+export default CardPlansWebView
 
 const styles = StyleSheet.create({
   servicesDetail_containerTitleDescription: {
@@ -76,10 +86,10 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   servicesDetail_containerDescription: {
-    maxHeight: 220
+    maxHeight: 350
   },
   servicesDetail_containerTermsAndConditions: {
-    marginTop: 10,
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -87,10 +97,10 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
-  
+
   servicesDetail_containerPrice: {
     position: 'absolute',
-    bottom: 130,
+    bottom: 50,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',

@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 import CoberturaJuridicaForm from '../CoberturaJuridicaForm'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet' 
 
-const FormCoberturaJuridicaComponent = ({ plan, price, procedureTipe }) => {
+const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC, logoIcon }) => {
     const navigation = useNavigation()
     const [ultil, setUltil] = useState('')
 
@@ -26,7 +26,7 @@ const FormCoberturaJuridicaComponent = ({ plan, price, procedureTipe }) => {
 
     
     const buttonRegisterCoberturaJuridica = (values) => {
-        navigation.navigate('PaimentMethod', { plan, price, procedureTipe, doctorSelected, values })
+        navigation.navigate('PaimentMethod', { id, plan, price, procedureTipe, doctorSelected, values, nameC, logoIcon })
     }
 
     useEffect(() => {

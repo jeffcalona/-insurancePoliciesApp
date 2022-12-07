@@ -8,34 +8,34 @@ const ServicesCardScreen = ({ status, logo, name, description, price, id, descri
 
     return (
         <View style={styles.servicesCardScreen}>
-        <View style={styles.servicesCardScreen_}>
-            <View style={styles.servicesCardScreen_imgContent}>
-                <Image style={styles.servicesCardScreen_img} source={logo} />
-            </View>
-            <View style={styles.servicesCardScreen_text}>
-                <View style={styles.servicesCardScreen_text_}>
-                    <Text style={styles.servicesCardScreen_textTitle}>{name}</Text>
-                    <Text style={styles.servicesCardScreen_textDescripcion}>{description}</Text>
-                    <Text style={styles.servicesCardScreen_textDesde}>Desde</Text>
-                    <Text style={styles.servicesCardScreen_textPrice}>
-                        {id === '1' ?
-                            `${price} /p`
-                            :
-                            `${price} /m`
-                        }
-                    </Text>
+            <View style={styles.servicesCardScreen_}>
+                <View style={styles.servicesCardScreen_imgContent}>
+                    <Image style={styles.servicesCardScreen_img} source={logo} />
                 </View>
-                {status === 'comprar' ? 
-                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, procedimientos: procedimientos, url: url })} style={styles.servicesCardCard_textActive}>
-                        <Text style={styles.servicesCardCard_textButton} >Comprar</Text>                    
-                    </TouchableOpacity>
-                    :
-                    <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, procedimientos: procedimientos, logo: logo, logoDetail: logoDetail, planes: planes, url: url })} style={styles.servicesCardCard_textDisabled}>
-                        <Text style={styles.servicesCardCard_textButton} >Renovar</Text>
-                    </TouchableOpacity>
-                }
+                <View style={styles.servicesCardScreen_text}>
+                    <View style={styles.servicesCardScreen_text_}>
+                        <Text style={styles.servicesCardScreen_textTitle}>{name}</Text>
+                        <Text style={styles.servicesCardScreen_textDescripcion}>{description}</Text>
+                        <Text style={styles.servicesCardScreen_textDesde}>Desde</Text>
+                        <Text style={styles.servicesCardScreen_textPrice}>
+                            {id === '1' ?
+                                `${price} /p`
+                                :
+                                `${price} /m`
+                            }
+                        </Text>
+                    </View>
+                    {status === 'comprar' ? 
+                        <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { id: id, name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, procedimientos: procedimientos, url: url })} style={styles.servicesCardCard_textActive}>
+                            <Text style={styles.servicesCardCard_textButton} >Comprar</Text>                    
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, procedimientos: procedimientos, logo: logo, logoDetail: logoDetail, planes: planes, url: url })} style={styles.servicesCardCard_textDisabled}>
+                            <Text style={styles.servicesCardCard_textButton} >Renovar</Text>
+                        </TouchableOpacity>
+                    }
+                </View>
             </View>
-        </View>
         </View>
     )
 }
@@ -83,17 +83,17 @@ const styles = StyleSheet.create({
         width: 150
     },
     servicesCardScreen_textTitle: {
-        fontSize: 17,
+        fontSize: 15,
         fontWeight: '800',
         lineHeight: 16
     },
     servicesCardScreen_textDescripcion: {
-        fontSize: 12,
+        fontSize: 11,
         fontWeight: '300',
         lineHeight: 11
     },
     servicesCardScreen_textDesde: {
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: '300'
     },
     servicesCardScreen_textPrice: {

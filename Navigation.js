@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ActivityIndicator, Image, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
+import { ActivityIndicator, Image, TouchableOpacity, View } from 'react-native';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
@@ -24,9 +24,11 @@ import OnBoarding from "./src/screens/OnBoarding";
 import { AuthContext } from "./src/Context/AuthContext";
 import PaimentData from "./src/screens/PaimentData";
 import More from './src/screens/More'
+import ShoppingCart from "./src/screens/ShoppingCart";
 
 //staks
 const ServicesScreenStack = createNativeStackNavigator()
+//Stack Cobertura Jurídica
 function Stacks() {
     return (
         <ServicesScreenStack.Navigator >
@@ -36,7 +38,52 @@ function Stacks() {
             <ServicesScreenStack.Screen name="FormPolicies" component={FormPolicies} />
             <ServicesScreenStack.Screen name="PaimentMethod" component={ShoppingCartCobertura} />
             <ServicesScreenStack.Screen name='PaimentData' component={PaimentData} />
+
+            <StackShppingCard.Screen name="ShoppingCart" component={ShoppingCart} />
         </ServicesScreenStack.Navigator>
+    )
+}
+//Stack Shopping Cart Home
+const StackShppingCard = createNativeStackNavigator()
+function StackShoppingCart() {
+    return (
+        <StackShppingCard.Navigator>
+            <StackShppingCard.Screen name="Home" component={Home} />
+            <StackShppingCard.Screen name="ShoppingCart" component={ShoppingCart} />
+        </StackShppingCard.Navigator>
+    )
+}
+
+//Stack Shopping Cart Coberturas
+const StackShppingCardCobertura = createNativeStackNavigator()
+function StackShoppingCartCobertura() {
+    return (
+        <StackShppingCardCobertura.Navigator>
+            <StackShppingCardCobertura.Screen name="CoberturaJuridica" component={CoberturaJuridica} />
+            <StackShppingCardCobertura.Screen name="ShoppingCart" component={ShoppingCart} />
+        </StackShppingCardCobertura.Navigator>
+    )
+}
+
+//Stack Shopping Cart Mis Pólizas
+const StackShppingCardMisP = createNativeStackNavigator()
+function StackShoppingCartMisP() {
+    return (
+        <StackShppingCardMisP.Navigator>
+            <StackShppingCardMisP.Screen name="MyPolices" component={MyPolicies} />
+            <StackShppingCardMisP.Screen name="ShoppingCart" component={ShoppingCart} />
+        </StackShppingCardMisP.Navigator>
+    )
+}
+
+//Stack Shopping Cart Mas
+const StackShppingCardMas = createNativeStackNavigator()
+function StackShoppingCartMas() {
+    return (
+        <StackShppingCardMas.Navigator>
+            <StackShppingCardMas.Screen name="More" component={More} />
+            <StackShppingCardMas.Screen name="ShoppingCart" component={ShoppingCart} />
+        </StackShppingCardMas.Navigator>
     )
 }
 
@@ -57,7 +104,7 @@ const Tab = createBottomTabNavigator()
 function Tabs() {
     return (
         <Tab.Navigator
-            initialRouteName='Home'
+            initialRouteName='Homee'
             screenOptions={{
                 tabBarActiveTintColor: '#1B7BCC',
                 tabBarInactiveTintColor: 'rgba(27, 123, 204, .3)',
@@ -73,22 +120,65 @@ function Tabs() {
                 }
             }}
         >
-            <Tab.Screen name="Home" component={Home} options={{
+            <Tab.Screen name="Homee" component={StackShoppingCart} options={({ route }) => ({
                 tabBarLabel: 'Inicio',
                 tabBarIcon: ({ color }) => (
                   <HomeIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
-                )
-            }} />
-            <Tab.Screen name="CoberturaJuridica" component={CoberturaJuridica} options={{
+                ),
+                headerShown: false,
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 90,
+                }
+            })} />
+            <Tab.Screen name="CoberturaJuridicaStack" component={StackShoppingCartCobertura} options={({ route }) => ({
                 tabBarLabel: 'Coberturas',
                 tabBarIcon: ({ focused }) => (
                   focused ? 
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: 1 }} />
                   :
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: .3 }} />
-                )
-            }} />
+                ),
+                headerShown: false,
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 90,
+                }
+            })} />
             <Tab.Screen name="AgregarServicios" component={Stacks} options={({ route }) => ({
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 90
+                },
+                tabBarLabel: 'Agregar',
+                tabBarIcon: () => (
+                  <AddCircle color='#1B7BCC'  variant="Bold" size={65} style={{ marginTop: -10, shadowOffset: {height: 4}, shadowColor: 'rgba(0, 0, 0, .8)', shadowOpacity: .3 }} />
+                ),
+                headerShown: false
+            })} />
+            <Tab.Screen name="MyPolicess" component={StackShoppingCartMisP} options={({ route }) => ({
+                tabBarLabel: 'Mis Pólizas',
+                tabBarIcon: ({ color }) => (
+                  <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
+                ),
                 tabBarStyle: {
                     display: getTabBarVisibility(route),
                     borderTopColor: 'white',
@@ -99,24 +189,25 @@ function Tabs() {
                     borderTopRightRadius: 30,
                     height: 90,
                 },
-                tabBarLabel: 'Agregar',
-                tabBarIcon: () => (
-                  <AddCircle color='#1B7BCC'  variant="Bold" size={65} style={{ marginTop: -10, shadowOffset: {height: 4}, shadowColor: 'rgba(0, 0, 0, .8)', shadowOpacity: .3 }} />
-                ),
                 headerShown: false
             })} />
-            <Tab.Screen name="MyPolices" component={MyPolicies} options={{
-                tabBarLabel: 'Mis Pólizas',
-                tabBarIcon: ({ color }) => (
-                  <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
-                )
-            }} />
-            <Tab.Screen name="Más" component={More} options={{
+            <Tab.Screen name="Máss" component={StackShoppingCartMas} options={({ route }) => ({
                 tabBarLabel: 'Más',
                 tabBarIcon: ({ color }) => (
                   <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
-                )
-            }} />
+                ),
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 90,
+                },
+                headerShown: false
+            })} />
         </Tab.Navigator>
     )
 }
@@ -138,6 +229,9 @@ const getTabBarVisibility = (route) => {
             return 'none';
             break
         case 'PaimentData':
+            return 'none';
+            break
+        case 'ShoppingCart':
             return 'none';
             break;
         default: 'flex'

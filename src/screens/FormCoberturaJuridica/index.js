@@ -5,10 +5,13 @@ import FormCoberturaJuridicaComponent from '../../components/FormCoberturaJuridi
 
 const FormCoberturaJuridica = ({ route }) => {
   const navigation = useNavigation()
-  
+
+  const [id, setId] = useState('')
   const [plan, setPlan] = useState('')
   const [price, setPrice] = useState('')
   const [procedureTipe, setProcedureTipe] = useState('')
+  const [nameC, setNameC] = useState('')
+  const [logoIcon, setLogoIcon] = useState('')
   
   let date = new Date()
 
@@ -20,9 +23,12 @@ const FormCoberturaJuridica = ({ route }) => {
       headerBackTitleVisible: false
     })
 
+    setId(route.params?.id)
     setPlan(route.params?.plan)
     setPrice(route.params?.price)
     setProcedureTipe(route.params?.procedureTipe)
+    setNameC(route.params?.name)
+    setLogoIcon(route.params?.logoIcon)
 
   }, [navigation, date])
 
@@ -35,7 +41,7 @@ const FormCoberturaJuridica = ({ route }) => {
         </ImageBackground>
       </View>
       <View style={styles.formCoberturaJuridica_container}>
-        <FormCoberturaJuridicaComponent plan={plan} price={price} procedureTipe={procedureTipe} />
+        <FormCoberturaJuridicaComponent id={id} plan={plan} price={price} procedureTipe={procedureTipe} nameC={nameC} logoIcon={logoIcon} />
       </View>
       <View style={styles.formCoberturaJuridica_logo}>
         <Image style={styles.formCoberturaJuridica_logoImg} source={route.params?.logoDetail} />

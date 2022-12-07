@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { NotificationBing, Profile as ProfileIcon } from 'iconsax-react-native'
+import { Profile as ProfileIcon, ShoppingCart } from 'iconsax-react-native'
 import PolizasCard from '../../components/Polizas/PolizasCard'
 import { AuthContext } from '../../Context/AuthContext'
 import { REACT_APP_USERDATABASE } from '@env'
@@ -26,11 +26,13 @@ const MyPolicies = () => {
     Navigation.setOptions({
       headerTitle: 'Mis Pólizas',
       headerLeft: () => (
-        <NotificationBing color={Navigation.color} variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        <TouchableOpacity onPress={handlerModal}>
+          <ProfileIcon color="black" variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={handlerModal}>
-          <ProfileIcon color={Navigation.color} variant="Linear" size={30} style={{ marginRight: 20 }} />
+        <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
+            <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
         </TouchableOpacity>
       ),
       headerStyle: {

@@ -4,7 +4,7 @@ import Publicity from '../../components/Publicity'
 import Services from '../../components/Services'
 import Polizas from '../../components/Polizas'
 import { useNavigation } from '@react-navigation/native'
-import { NotificationBing, Profile as ProfileIcon } from 'iconsax-react-native'
+import { Profile as ProfileIcon, ShoppingCart } from 'iconsax-react-native'
 import { AuthContext } from '../../Context/AuthContext'
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import Profile from '../Profile'
@@ -23,11 +23,13 @@ const Home = () => {
     Navigation.setOptions({
       headerTitle: `Hola, ${userData.name}`,
       headerLeft: () => (
-        <NotificationBing color={Navigation.color} variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        <TouchableOpacity onPress={handlerModal}>
+          <ProfileIcon color="black" variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={handlerModal}>
-          <ProfileIcon color={Navigation.color} variant="Linear" size={30} style={{ marginRight: 20 }} />
+        <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
+            <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
         </TouchableOpacity>
       ),
       headerStyle: {
@@ -55,9 +57,9 @@ export default Home
 
 const styles = StyleSheet.create({
     home: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'white'
+      flex: 1,
+      alignItems: 'center',
+      backgroundColor: 'white'
     },
     logoutButton: {
       width: '70%',

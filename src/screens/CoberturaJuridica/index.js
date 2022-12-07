@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { NotificationBing, Profile as ProfileIcon } from 'iconsax-react-native'
+import { Profile as ProfileIcon, ShoppingCart } from 'iconsax-react-native'
 import BlindajeLogo from '../../Assets/Icons/BlindajeLogo.png'
 import PolizasCard from '../../components/Polizas/PolizasCard'
 import { AuthContext } from '../../Context/AuthContext'
@@ -25,11 +25,13 @@ const CoberturaJuridica = () => {
   useEffect(() => {
     Navigation.setOptions({
       headerLeft: () => (
-        <NotificationBing color={Navigation.color} variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        <TouchableOpacity onPress={handlerModal}>
+          <ProfileIcon color="black" variant="Linear" size={30} style={{ marginLeft: 20 }} />
+        </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={handlerModal}>
-          <ProfileIcon color={Navigation.color} variant="Linear" size={30} style={{ marginRight: 20 }} />
+        <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
+            <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
         </TouchableOpacity>
       ),
       headerTitle: 'Coberturas',
@@ -68,7 +70,8 @@ export default CoberturaJuridica
 const styles = StyleSheet.create({
   coberturaJuridica: {
     backgroundColor: 'white',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 10
   },
   coberturaJuridica_: {
     width: '90%',
