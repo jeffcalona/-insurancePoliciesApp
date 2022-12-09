@@ -8,15 +8,15 @@ import * as Yup from 'yup'
 import FormPaimentData from '../../components/FormPaimentData'
 import { AuthContext } from '../../Context/AuthContext'
 const PaimentData = ({ route, ...props }) => {
-  const {setShopping} = useContext(AuthContext)
+  const {setShopping, shopping} = useContext(AuthContext)
+  console.log('carrito de compra en paimentData: ', shopping)
 
     const navigation = useNavigation()
-    console.log('holiii: ', route.params?.doctorSelected)
 
-
-    const payCobertura = async (values) => {
-        await axios.post(`${REACT_APP_COBERTURA}/register`, {
-            plan: route.params?.plan, price: route.params?.price, procedureTipe: route.params?.procedureTipe, doctor_id: route.params?.doctorSelected[0].id , fullNameP: route.params?.values.fullNameP, identificationP: route.params?.values.identificationP, directionP: route.params?.values.directionP, phoneP: route.params?.values.phoneP, nitC: route.params?.values.nitC, directionC: route.params?.values.directionC, cityC: route.params?.values.cityC, datePro: route.params?.values.datePro.toLocaleDateString(), timePro: route.params?.values.timePro.toLocaleTimeString()
+    const payCobertura = (values) => {
+      shopping.map((data, index) => {
+        return (axios.post(`${REACT_APP_COBERTURA}/register`, {
+          plan: data.plan, price: data.price, procedureTipe: data.procedureTipe, doctor_id: data.doctorSelected[0].id, fullNameP: data.values.fullNameP, identificationP: data.values.identificationP, directionP: data.values.directionP, phoneP: data.values.phoneP, nitC: data.values.nitC, directionC: data.values.directionC, cityC: data.values.cityC, datePro: data.values.datePro.toLocaleDateString(), timePro: data.values.timePro.toLocaleTimeString()
         }).then(res => {
             console.log('Paciente Registrado Con Éxito')
             navigation.navigate('Homee')
@@ -24,7 +24,20 @@ const PaimentData = ({ route, ...props }) => {
         }).catch(e => {
             console.log('Error!', e.response)
         })
+      )})
     }
+
+  //   const payCobertura = async (values) => {
+  //     await axios.post(`${REACT_APP_COBERTURA}/register`, {
+  //         plan: route.params?.plan, price: route.params?.price, procedureTipe: route.params?.procedureTipe, doctor_id: route.params?.doctorSelected[0].id , fullNameP: route.params?.values.fullNameP, identificationP: route.params?.values.identificationP, directionP: route.params?.values.directionP, phoneP: route.params?.values.phoneP, nitC: route.params?.values.nitC, directionC: route.params?.values.directionC, cityC: route.params?.values.cityC, datePro: route.params?.values.datePro.toLocaleDateString(), timePro: route.params?.values.timePro.toLocaleTimeString()
+  //     }).then(res => {
+  //         console.log('Paciente Registrado Con Éxito')
+  //         navigation.navigate('Homee')
+  //         setShopping([])
+  //     }).catch(e => {
+  //         console.log('Error!', e.response)
+  //     })
+  // }
 
     useEffect(() => {
         navigation.setOptions({

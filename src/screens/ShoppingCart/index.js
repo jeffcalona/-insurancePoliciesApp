@@ -6,11 +6,10 @@ import { useNavigation } from '@react-navigation/native'
 
 const ShoppingCart = () => {
   const navigation = useNavigation()
-  const {shopping, setShopping} = useContext(AuthContext)
+  const {shopping, setShopping, total, setTotal} = useContext(AuthContext)
 
   console.log('productos en carrito: ', shopping)
-
-  const [total, setTotal] = useState(0)
+  console.log('length: ', shopping.length)
   
   const deleteCobertureCart = (item) => {
     const newCobertureList = shopping.filter((elements) => elements !== item)
@@ -48,7 +47,7 @@ const ShoppingCart = () => {
                 <Text>{total}.000</Text>
               </View>
               <View style={{alignItems: 'center'}}>
-                <TouchableOpacity style={styles.shoppingCart_button}>
+                <TouchableOpacity style={styles.shoppingCart_button} onPress={() => navigation.navigate('PaimentData', {total: total})}>
                   <Text style={{color: 'white', fontSize: 14, fontWeight: '600'}}>Ir a Pagar</Text>
                 </TouchableOpacity>
               </View>

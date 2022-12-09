@@ -1,14 +1,17 @@
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import InputFormPaimentData from '../InputFormPaimentData'
 import { useFormikContext } from 'formik'
 import LogoMastercard from '../../Assets/Icons/LogoMastercard.png'
 import LogoVisa from '../../Assets/Icons/LogoVisa.png'
 import LogoMastercardBlack from '../../Assets/Icons/LogoMastercardBlack.png'
 import LogoVisaBlack from '../../Assets/Icons/LogoVisaBlack.png'
+import { AuthContext } from '../../Context/AuthContext'
 
 const FormPaimentData = ({ paimentVal }) => {
     const { submitForm, ...props } = useFormikContext()
+  const {total} = useContext(AuthContext)
+
 
     const [numInCard, setNumInCard] = useState('**** **** **** ****')
     const [nameInCard, setNameInCard] = useState('Nombre Apellido')
@@ -83,7 +86,7 @@ const FormPaimentData = ({ paimentVal }) => {
             </View>
         </View>
         <TouchableOpacity style={styles.paimentData_paimentButton} onPress={submitForm}>
-            <Text style={styles.paimentData_paimentButtonText}>pagar ${paimentVal}</Text>
+            <Text style={styles.paimentData_paimentButtonText}>pagar ${total}.000</Text>
         </TouchableOpacity>
     </>
   )

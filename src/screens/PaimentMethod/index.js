@@ -6,7 +6,7 @@ import LogoNequi from '../../Assets/Icons/LogoNequi.png'
 import { AuthContext } from '../../Context/AuthContext'
 
 const ShoppingCartCobertura = ({ route }) => {
-  const {setShopping, shopping} = useContext(AuthContext)
+  const {setShopping, shopping, total} = useContext(AuthContext)
   // const {addItemCar} = useContext(AuthContext)
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
@@ -30,6 +30,22 @@ const ShoppingCartCobertura = ({ route }) => {
     setShopping([...shopping, shoppingCartData])
 
     navigation.navigate('AgregarServiciosStack')
+  }
+
+  const paimentCartAndAddShoppingCart = () => {
+    const shoppingCartData = {
+      nameC: route.params?.nameC,
+      plan: route.params?.plan,
+      price: route.params?.price,
+      procedureTipe: route.params?.procedureTipe,
+      values: route.params?.values,
+      tipePaiment: 'Tarjeta',
+      doctorSelected: route.params?.doctorSelected,
+      logoIcon: route.params?.logoIcon
+    }
+    setShopping([...shopping, shoppingCartData])
+
+    navigation.navigate('PaimentData')
   }
 
   useEffect(() => {
@@ -71,7 +87,7 @@ const ShoppingCartCobertura = ({ route }) => {
               <View style={{width: '100%', alignItems: 'center'}}>
                 <View style={styles.openPaimentMethod_card}>
                   <Text style={{ color: 'white' }}>Selecciona método de pago</Text>
-                  <TouchableOpacity style={styles.openPaimentMethod_cardCredit} onPress={() => navigation.navigate('PaimentData', {plan: route.params?.plan, price: route.params?.price, procedureTipe: route.params?.procedureTipe, values: route.params?.values, tipePaiment: 'Tarjeta', doctorSelected: route.params?.doctorSelected})}>
+                  <TouchableOpacity style={styles.openPaimentMethod_cardCredit} onPress={paimentCartAndAddShoppingCart}>
                     <View style={styles.shoppingCartCobertura_method_peq}>
                       <Card size={30} color='black' />
                       <View>
@@ -220,3 +236,5 @@ const styles = StyleSheet.create({
       </View>
     </TouchableOpacity>
   </View> */}
+
+  // onPress={() => navigation.navigate('PaimentData', {plan: route.params?.plan, price: route.params?.price, values: route.params?.values, tipePaiment: 'Cuenta'})}

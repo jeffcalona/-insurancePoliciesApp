@@ -12,6 +12,9 @@ export const AuthProvider = ({ children }) => {
     const [userToken, setUserToken] = useState(null)
 
     const [shopping, setShopping] = useState([])
+    const [total, setTotal] = useState(0)
+    console.log('Carrito de compraaa: ', shopping)
+    console.log('tooootalll: ', total)
 
     // const [shopping, setShopping] = useState(() => {
     //     try {
@@ -119,8 +122,16 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn()
     }, [])
 
+    useEffect(() => {
+        const sumatoria = shopping.reduce((sum, value) => (
+            typeof value.price == "string" ?
+            sum + parseFloat(value.price) : sum
+        ), 0)
+        setTotal(sumatoria)
+    }, [shopping])
+
     return (
-        <AuthContext.Provider value={{ login, register, logout, isLoading, userToken, userData, setShopping, shopping }}>
+        <AuthContext.Provider value={{ login, register, logout, isLoading, userToken, userData, setShopping, shopping, total, setTotal }}>
             {children}
         </AuthContext.Provider>
     )
