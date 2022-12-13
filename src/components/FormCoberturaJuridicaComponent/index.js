@@ -11,6 +11,7 @@ const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC,
     const [ultil, setUltil] = useState('')
 
     const [doctorSelected, setDoctorSelected] = useState([])
+    const [doctorsSelectedId, setDoctorsSelectedId] = useState([])
     
     let date = new Date()
     
@@ -26,7 +27,7 @@ const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC,
 
     
     const buttonRegisterCoberturaJuridica = (values) => {
-        navigation.navigate('PaimentMethod', { id, plan, price, procedureTipe, doctorSelected, values, nameC, logoIcon })
+        navigation.navigate('PaimentMethod', { id, plan, price, procedureTipe, doctorSelected, doctorsSelectedId, values, nameC, logoIcon })
     }
 
     useEffect(() => {
@@ -76,7 +77,7 @@ const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC,
                     })}
                     onSubmit={(values, props, doctorSelected) => buttonRegisterCoberturaJuridica(values, props, doctorSelected)}
                 >
-                    <CoberturaJuridicaForm procedureTipe={procedureTipe} setDoctorSelected={setDoctorSelected} doctorSelected={doctorSelected} />
+                    <CoberturaJuridicaForm procedureTipe={procedureTipe} setDoctorSelected={setDoctorSelected} doctorSelected={doctorSelected} doctorsSelectedId={doctorsSelectedId} setDoctorsSelectedId={setDoctorsSelectedId} />
                 </Formik>
         </ScrollView>
     </BottomSheetModalProvider>

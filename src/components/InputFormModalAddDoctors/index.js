@@ -4,7 +4,7 @@ import { Hashtag, User } from 'iconsax-react-native'
 import axios from 'axios'
 import { REACT_APP_USERDATABASE } from '@env'
 
-const InputFormModalAddDoctors = ({ valueDoctor, bottomSheetModalRef, doctorSelected, setDoctorSelected, setFilter, setValueDoctor }) => {
+const InputFormModalAddDoctors = ({ valueDoctor, bottomSheetModalRef, doctorSelected, setDoctorSelected, setFilter, setValueDoctor, doctorsSelectedId, setDoctorsSelectedId }) => {
 
     const [nameAddDoctor, setNameAddDoctor] = useState(valueDoctor)
     const [identificationAddDoctor, setIdentificationAddDoctor] = useState('')
@@ -33,6 +33,7 @@ const InputFormModalAddDoctors = ({ valueDoctor, bottomSheetModalRef, doctorSele
                             name: resNew.data.doctor[0].name
                         }
                         setDoctorSelected([...doctorSelected, doctorSelectedNew])
+                        setDoctorsSelectedId([...doctorsSelectedId, resNew.data.doctor[0].id])
                         setFilter([])
                         setValueDoctor('')
                         bottomSheetModalRef.current.close()

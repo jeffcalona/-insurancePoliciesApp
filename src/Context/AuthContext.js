@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     const [shopping, setShopping] = useState([])
     const [total, setTotal] = useState(0)
     console.log('Carrito de compraaa: ', shopping)
-    console.log('tooootalll: ', total)
 
     // const [shopping, setShopping] = useState(() => {
     //     try {

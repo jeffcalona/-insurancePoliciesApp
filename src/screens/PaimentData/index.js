@@ -16,7 +16,7 @@ const PaimentData = ({ route, ...props }) => {
     const payCobertura = (values) => {
       shopping.map((data, index) => {
         return (axios.post(`${REACT_APP_COBERTURA}/register`, {
-          plan: data.plan, price: data.price, procedureTipe: data.procedureTipe, doctor_id: data.doctorSelected[0].id, fullNameP: data.values.fullNameP, identificationP: data.values.identificationP, directionP: data.values.directionP, phoneP: data.values.phoneP, nitC: data.values.nitC, directionC: data.values.directionC, cityC: data.values.cityC, datePro: data.values.datePro.toLocaleDateString(), timePro: data.values.timePro.toLocaleTimeString()
+          plan: data.plan, price: data.price, procedureTipe: data.procedureTipe, doctor_id: data.doctorsSelectedId, fullNameP: data.values.fullNameP, identificationP: data.values.identificationP, directionP: data.values.directionP, phoneP: data.values.phoneP, nitC: data.values.nitC, directionC: data.values.directionC, cityC: data.values.cityC, datePro: data.values.datePro.toLocaleDateString(), timePro: data.values.timePro.toLocaleTimeString()
         }).then(res => {
             console.log('Paciente Registrado Con Éxito')
             navigation.navigate('Homee')
@@ -81,3 +81,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
+
+// doctor_id: data.doctorSelected[0].id

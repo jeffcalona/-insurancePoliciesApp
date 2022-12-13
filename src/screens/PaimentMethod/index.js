@@ -12,9 +12,13 @@ const ShoppingCartCobertura = ({ route }) => {
     'Non-serializable values were found in the navigation state',
   ])
 
+  console.log('doctorSelected: ', route.params?.doctorSelected)
+  console.log('doctorsSelectedId: ', route.params?.doctorsSelectedId)
+
   const navigation = useNavigation()
 
   const [openPaimentMethod, setOpenPaimentMethod] = useState(false)
+  
 
   const addShoppingCart = () => {
     const shoppingCartData = {
@@ -25,6 +29,7 @@ const ShoppingCartCobertura = ({ route }) => {
       values: route.params?.values,
       tipePaiment: 'Tarjeta',
       doctorSelected: route.params?.doctorSelected,
+      doctorsSelectedId: route.params?.doctorsSelectedId,
       logoIcon: route.params?.logoIcon
     }
     setShopping([...shopping, shoppingCartData])
@@ -41,7 +46,8 @@ const ShoppingCartCobertura = ({ route }) => {
       values: route.params?.values,
       tipePaiment: 'Tarjeta',
       doctorSelected: route.params?.doctorSelected,
-      logoIcon: route.params?.logoIcon
+      doctorsSelectedId: route.params?.doctorsSelectedId,
+      logoIcon: route.params?.logoIcon,
     }
     setShopping([...shopping, shoppingCartData])
 

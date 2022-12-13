@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useFormikContext } from 'formik'
 import InputFormCoberturaJuridica from '../InputFormCoberturaJuridica'
 import { Add, Book, Book1, Calendar, Clock, Hashtag, RecordCircle, RouteSquare, Scissor, User, VolumeHigh } from 'iconsax-react-native'
@@ -9,9 +9,8 @@ import axios from 'axios'
 import { REACT_APP_USERDATABASE } from '@env'
 import { BottomSheetModal } from '@gorhom/bottom-sheet' 
 import InputFormModalAddDoctors from '../InputFormModalAddDoctors'
-import DoctorSelectedComponent from '../DoctorSelectedComponent'
 
-const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelected }) => {
+const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelected, setDoctorsSelectedId, doctorsSelectedId }) => {
     const { submitForm, ...props } = useFormikContext()
     //modal
     const bottomSheetModalRef = useRef(null)
@@ -58,6 +57,8 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
                 name: element.element.name,
             }
             setDoctorSelected([...doctorSelected, doctorsAdd])
+
+            setDoctorsSelectedId([...doctorsSelectedId, element.element.id])
         }
     }
 
@@ -66,8 +67,12 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
     }
 
     const deleteDoctor = (data) => {
+        console.log('data', data.id)
         const newDoctorSelected = doctorSelected.filter((doctors) => doctors !== data)
         setDoctorSelected(newDoctorSelected)
+
+        const newDoctorIdSelected = doctorSelected.filter((doctors) => doctors.id !== data.id)
+        setDoctorsSelectedId(newDoctorIdSelected)
     }
 
   return (
@@ -96,7 +101,7 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
                                 <Text style={styles.inputDoctorsFilter_buttonAddText}>Agregar Médico Cirujano</Text>
                             </TouchableOpacity>
                             <BottomSheetModal ref={bottomSheetModalRef} index={0} snapPoints={snapModalPoint} backgroundStyle={{ borderRadius: 30, shadowOffset: {height: -3}, shadowColor: 'black', shadowOpacity: 0.4}}>
-                                <InputFormModalAddDoctors valueDoctor={valueDoctor} bottomSheetModalRef={bottomSheetModalRef} doctorSelected={doctorSelected} setDoctorSelected={setDoctorSelected} setFilter={setFilter} setValueDoctor={setValueDoctor} />
+                                <InputFormModalAddDoctors valueDoctor={valueDoctor} bottomSheetModalRef={bottomSheetModalRef} doctorSelected={doctorSelected} setDoctorSelected={setDoctorSelected} setFilter={setFilter} setValueDoctor={setValueDoctor} setDoctorsSelectedId={setDoctorsSelectedId} doctorsSelectedId={doctorsSelectedId} />
                             </BottomSheetModal>
                         </View>
                 : doctorSelected !== '' ?
