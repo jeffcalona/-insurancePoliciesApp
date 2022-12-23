@@ -18,7 +18,7 @@ const ShoppingCartCobertura = ({ route }) => {
 
   const navigation = useNavigation()
 
-  const [openPaimentMethod, setOpenPaimentMethod] = useState(false)
+  const [openPaimentMethod, setOpenPaimentMethod] = useState(!route.params?.car)
   
 
   const addShoppingCart = () => {
@@ -39,21 +39,47 @@ const ShoppingCartCobertura = ({ route }) => {
   }
 
   const paimentCartAndAddShoppingCart = () => {
-    const shoppingCartData = {
-      nameC: route.params?.nameC,
-      plan: route.params?.plan,
-      price: route.params?.price,
-      procedureTipe: route.params?.procedureTipe,
-      values: route.params?.values,
-      tipePaiment: 'Tarjeta',
-      doctorSelected: route.params?.doctorSelected,
-      doctorsSelectedId: route.params?.doctorsSelectedId,
-      logoIcon: route.params?.logoIcon,
+    if(route.params?.car){
+      const shoppingCartData = {
+        nameC: route.params?.nameC,
+        plan: route.params?.plan,
+        price: route.params?.price,
+        procedureTipe: route.params?.procedureTipe,
+        values: route.params?.values,
+        tipePaiment: 'Tarjeta',
+        doctorSelected: route.params?.doctorSelected,
+        doctorsSelectedId: route.params?.doctorsSelectedId,
+        logoIcon: route.params?.logoIcon,
+      }
+      setShopping([shoppingCartData])
     }
-    setShopping([shoppingCartData])
+    
 
     navigation.navigate('PaimentData')
   }
+
+
+  const paymentNequi = () => {
+
+    if(route.params?.car){
+      const shoppingCartData = {
+        nameC: route.params?.nameC,
+        plan: route.params?.plan,
+        price: route.params?.price,
+        procedureTipe: route.params?.procedureTipe,
+        values: route.params?.values,
+        tipePaiment: 'Tarjeta',
+        doctorSelected: route.params?.doctorSelected,
+        doctorsSelectedId: route.params?.doctorsSelectedId,
+        logoIcon: route.params?.logoIcon,
+      }
+      setShopping([shoppingCartData])
+    }
+    
+
+    navigation.navigate('PaymentNequi')
+  }
+
 
   useEffect(() => {
     navigation.setOptions({
@@ -67,16 +93,25 @@ const ShoppingCartCobertura = ({ route }) => {
   return (
     <View style={styles.shoppingCartCoberturaContainer}>
       <View style={styles.shoppingCartCobertura}>
-        <TouchableOpacity style={styles.shoppingCartCobertura_method} onPress={addShoppingCart}>
-          <View style={styles.shoppingCartCobertura_method_}>
-            <ShopAdd size={30} color='black' />
-            <View>
-              <Text style={styles.shoppingCartCobertura_methodFirstText}>Agregar al Carrito</Text>
-              <Text style={styles.shoppingCartCobertura_methodSecondText}>Continuar comprando</Text>
-            </View>
-            <ArrowRight2 size={25} color='#1B7BCC' />
-          </View>
-        </TouchableOpacity>
+
+     
+           {
+            route.params?.car &&
+            <TouchableOpacity style={styles.shoppingCartCobertura_method} onPress={addShoppingCart}>
+              <View style={styles.shoppingCartCobertura_method_}>
+                <ShopAdd size={30} color='black' />
+                <View>
+                  <Text style={styles.shoppingCartCobertura_methodFirstText}>Agregar al Carrito</Text>
+                  <Text style={styles.shoppingCartCobertura_methodSecondText}>Continuar comprando</Text>
+                </View>
+                <ArrowRight2 size={25} color='#1B7BCC' />
+              </View>
+            </TouchableOpacity>
+    
+           } 
+
+
+
         <TouchableOpacity style={openPaimentMethod ? styles.shoppingCartCobertura_methodOpen : styles.shoppingCartCobertura_method} onPress={() => setOpenPaimentMethod(!openPaimentMethod)}>
           <View style={openPaimentMethod ? styles.shoppingCartCobertura_method_open : styles.shoppingCartCobertura_method_}>
             <Shop size={30} color={openPaimentMethod ? 'white' : 'black'} />
@@ -104,7 +139,7 @@ const ShoppingCartCobertura = ({ route }) => {
                       <ArrowRight2 size={25} color='#1B7BCC' />
                     </View>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.shoppingCartCobertura_method} onPress={() => navigation.navigate('PaimentData', {plan: route.params?.plan, price: route.params?.price, values: route.params?.values, tipePaiment: 'Cuenta'})}>
+                  <TouchableOpacity style={styles.shoppingCartCobertura_method} onPress={paymentNequi}>
                     <View style={styles.shoppingCartCobertura_method_peq}>
                       <View>
                         <Image source={LogoNequi} style={styles.shoppingCartCobertura_methodNequi} />

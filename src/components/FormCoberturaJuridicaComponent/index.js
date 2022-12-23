@@ -27,7 +27,7 @@ const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC,
 
     
     const buttonRegisterCoberturaJuridica = (values) => {
-        navigation.navigate('PaimentMethod', { id, plan, price, procedureTipe, doctorSelected, doctorsSelectedId, values, nameC, logoIcon })
+        navigation.navigate('PaimentMethod', { id, plan, price, procedureTipe, doctorSelected, doctorsSelectedId, values, nameC, logoIcon, car:true })
     }
 
     useEffect(() => {

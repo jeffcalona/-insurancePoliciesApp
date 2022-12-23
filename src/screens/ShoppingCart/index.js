@@ -47,7 +47,7 @@ const ShoppingCart = () => {
                 <Text>{total}.000</Text>
               </View>
               <View style={{alignItems: 'center'}}>
-                <TouchableOpacity style={styles.shoppingCart_button} onPress={() => navigation.navigate('PaimentData', {total: total})}>
+                <TouchableOpacity style={styles.shoppingCart_button} onPress={() => navigation.navigate('PaimentMethod', {total: total, car: false})}>
                   <Text style={{color: 'white', fontSize: 14, fontWeight: '600'}}>Ir a Pagar</Text>
                 </TouchableOpacity>
               </View>
