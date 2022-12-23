@@ -23,6 +23,7 @@ import Register from "./src/screens/Register";
 import OnBoarding from "./src/screens/OnBoarding";
 import { AuthContext } from "./src/Context/AuthContext";
 import PaimentData from "./src/screens/PaimentData";
+import PaymentSummary from "./src/screens/PaymentSummary";
 import More from './src/screens/More'
 import ShoppingCart from "./src/screens/ShoppingCart";
 
@@ -38,7 +39,7 @@ function Stacks() {
             <ServicesScreenStack.Screen name="FormPolicies" component={FormPolicies} />
             <ServicesScreenStack.Screen name="PaimentMethod" component={ShoppingCartCobertura} />
             <ServicesScreenStack.Screen name='PaimentData' component={PaimentData} />
-
+            <ServicesScreenStack.Screen name='PaymentSummary' component={PaymentSummary} />
             <StackShppingCard.Screen name="ShoppingCart" component={ShoppingCart} />
         </ServicesScreenStack.Navigator>
     )

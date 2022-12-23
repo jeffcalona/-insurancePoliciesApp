@@ -14,6 +14,7 @@ const ShoppingCartCobertura = ({ route }) => {
 
   console.log('doctorSelected: ', route.params?.doctorSelected)
   console.log('doctorsSelectedId: ', route.params?.doctorsSelectedId)
+  console.log('Price: ', route.params?.price)
 
   const navigation = useNavigation()
 
@@ -49,7 +50,7 @@ const ShoppingCartCobertura = ({ route }) => {
       doctorsSelectedId: route.params?.doctorsSelectedId,
       logoIcon: route.params?.logoIcon,
     }
-    setShopping([...shopping, shoppingCartData])
+    setShopping([shoppingCartData])
 
     navigation.navigate('PaimentData')
   }
