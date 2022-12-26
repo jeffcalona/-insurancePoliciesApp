@@ -1,42 +1,38 @@
-import { Image, ImageBackground, StyleSheet, Text, Dimensions, View, Alert } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import CardPlans from './CardPlans'
-import axios from 'axios'
-import {REACT_APP_USERDATABASE} from '@env'
-import { AuthContext } from '../../Context/AuthContext'
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import CardPlansWebView from './CardPlansWebView'
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  Dimensions,
+  View,
+} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import CardPlans from './CardPlans';
+import {AuthContext} from '../../Context/AuthContext';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import CardPlansWebView from './CardPlansWebView';
 
-const ServicesDetail = ({ route }) => {
-  const navigation = useNavigation()
-  const {userData} = useContext(AuthContext)
+const ServicesDetail = ({route}) => {
+  const navigation = useNavigation();
+  const {userData} = useContext(AuthContext);
 
-  const [basicPlan, setBasicPlan] = useState(true)
-  const [plusPlan, setPlusPlan] = useState(false)
+  const [basicPlan, setBasicPlan] = useState(true);
+  const [plusPlan, setPlusPlan] = useState(false);
 
   //Button procedureTipe
-  const [esteticoSelected, setEsteticaSelected] = useState(true)
-  const [quirurgicoSelected, setQuirurgicaSelected] = useState(false)
+  const [esteticoSelected, setEsteticaSelected] = useState(true);
+  const [quirurgicoSelected, setQuirurgicaSelected] = useState(false);
 
   const handleBasicPlan = () => {
-    setBasicPlan(true)
-    setPlusPlan(false)
-  }
+    setBasicPlan(true);
+    setPlusPlan(false);
+  };
   const handlePlusPlan = () => {
-    setBasicPlan(false)
-    setPlusPlan(true)
-  }
-
-  const otherServices = async () => {
-    navigation.navigate('FormPolicies', { price: route.params?.price, backgroundImg: route.params?.backgroundImg, name: route.params?.name, logoDetail: route.params?.logoDetail, url: route.params?.url})
-
-    await axios.post(`${REACT_APP_USERDATABASE}/update/trackingService/${route.params?.name}`, {
-      nameU: userData.name, service: route.params?.name
-    })
-
-  }
+    setBasicPlan(false);
+    setPlusPlan(true);
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -44,95 +40,231 @@ const ServicesDetail = ({ route }) => {
       headerTransparent: true,
       headerTintColor: 'white',
       headerBackTitleVisible: false,
-    })
-  }, [navigation])
+    });
+  }, [navigation]);
 
   const pressEstetico = () => {
-    setEsteticaSelected(true)
-    setQuirurgicaSelected(false)
-  }
+    setEsteticaSelected(true);
+    setQuirurgicaSelected(false);
+  };
 
   const pressQuirurgico = () => {
-    setEsteticaSelected(false)
-    setQuirurgicaSelected(true)
-  }
+    setEsteticaSelected(false);
+    setQuirurgicaSelected(true);
+  };
 
   return (
     <BottomSheetModalProvider>
       <View style={styles.servicesDetail}>
         <View style={styles.servicesDetail_header}>
-          <ImageBackground style={styles.servicesDetail_headerImgBackground} source={route.params?.backgroundImg}>
-            <Text style={styles.servicesDetail_Title}>{route.params?.name}</Text>
+          <ImageBackground
+            style={styles.servicesDetail_headerImgBackground}
+            source={route.params?.backgroundImg}>
+            <Text style={styles.servicesDetail_Title}>
+              {route.params?.name}
+            </Text>
           </ImageBackground>
         </View>
         <View style={styles.servicesDetail_container}>
           {route.params?.procedimientos ?
             <View style={styles.servicesDetail_container_}>
-              <Text style={styles.servicesDetail_procedureTipeTitle}>Seleccione el tipo de procedimiento</Text>
+              <Text style={styles.servicesDetail_procedureTipeTitle}>
+                Seleccione el tipo de procedimiento
+              </Text>
               <View style={styles.servicesDetail_procedureTipe}>
                 <View style={styles.servicesDetail_procedureTipe_}>
-                  <TouchableOpacity onPress={pressEstetico} style={esteticoSelected === true ? styles.servicesDetail_procedureSelected : styles.servicesDetail_procedureNoSelected}>
-                    <Text style={{color: 'white', fontSize: 16, fontWeight: '600'}}>Estético</Text>
+                  <TouchableOpacity
+                    onPress={pressEstetico}
+                    style={
+                      esteticoSelected === true
+                        ? styles.servicesDetail_procedureSelected
+                        : styles.servicesDetail_procedureNoSelected
+                    }>
+                    <Text
+                      style={{color: 'white', fontSize: 16, fontWeight: '600'}}>
+                      Estético
+                    </Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={pressQuirurgico} style={quirurgicoSelected === true ? styles.servicesDetail_procedureSelected : styles.servicesDetail_procedureNoSelected}>
-                    <Text style={{color: 'white', fontSize: 16, fontWeight: '600'}}>Quirúrgico</Text>
+                  <TouchableOpacity
+                    onPress={pressQuirurgico}
+                    style={
+                      quirurgicoSelected === true
+                        ? styles.servicesDetail_procedureSelected
+                        : styles.servicesDetail_procedureNoSelected
+                    }>
+                    <Text
+                      style={{color: 'white', fontSize: 16, fontWeight: '600'}}>
+                      Quirúrgico
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
-              <Text style={styles.servicesDetail_containerTextTitle}>Planes</Text>
+              <Text style={styles.servicesDetail_containerTextTitle}>
+                Planes
+              </Text>
               {esteticoSelected === true ?
                 <View style={{height: '100%', paddingHorizontal: 5}}>
                   <View style={styles.servicesDetail_containerButtons}>
-                    <TouchableOpacity style={[styles.servicesDetail_containerButton, { shadowOpacity: basicPlan ? 0 : 0.4 } ]} onPress={handleBasicPlan}>
-                      <Text style={styles.servicesDetail_containerButtonText}>Básico</Text>
+                    <TouchableOpacity
+                      style={[
+                        styles.servicesDetail_containerButton,
+                        {shadowOpacity: basicPlan ? 0 : 0.4},
+                      ]}
+                      onPress={handleBasicPlan}>
+                      <Text style={styles.servicesDetail_containerButtonText}>
+                        Básico
+                      </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.servicesDetail_containerButton, { shadowOpacity: !plusPlan ? 0.4 : 0 } ]}  onPress={handlePlusPlan}>
-                      <Text style={styles.servicesDetail_containerButtonText}>Plus</Text>
+                    <TouchableOpacity
+                      style={[
+                        styles.servicesDetail_containerButton,
+                        {shadowOpacity: !plusPlan ? 0.4 : 0},
+                      ]}
+                      onPress={handlePlusPlan}>
+                      <Text style={styles.servicesDetail_containerButtonText}>
+                        Plus
+                      </Text>
                     </TouchableOpacity>
                   </View>
-                  {basicPlan && 
-                    <CardPlans idN={route.params?.id} titleDescription={'Descripción'} description={route.params?.procedimientos[0].estetico.planes[0].planDescription} price={route.params?.procedimientos[0].estetico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo}/>
-                  }
-                  {plusPlan && 
-                    <CardPlans idN={route.params?.id} titleDescription={'Adicional'} description={route.params?.procedimientos[0].estetico.planes[1].planDescription} price={route.params?.procedimientos[0].estetico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Estético'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
-                  }
+                  {basicPlan && (
+                    <CardPlans
+                      idN={route.params?.id}
+                      titleDescription={'Descripción'}
+                      description={
+                        route.params?.procedimientos[0].estetico.planes[0]
+                          .planDescription
+                      }
+                      price={
+                        route.params?.procedimientos[0].estetico.planes[0]
+                          .planPrice
+                      }
+                      planN={'Básico'}
+                      procedureTipeN={'Estético'}
+                      backgroundImgN={route.params?.backgroundImg}
+                      nameN={route.params?.name}
+                      logoDetailN={route.params?.logoDetail}
+                      logoIcon={route.params?.logo}
+                    />
+                  )}
+                  {plusPlan && (
+                    <CardPlans
+                      idN={route.params?.id}
+                      titleDescription={'Adicional'}
+                      description={
+                        route.params?.procedimientos[0].estetico.planes[1]
+                          .planDescription
+                      }
+                      price={
+                        route.params?.procedimientos[0].estetico.planes[1]
+                          .planPrice
+                      }
+                      planN={'Plus'}
+                      procedureTipeN={'Estético'}
+                      backgroundImgN={route.params?.backgroundImg}
+                      nameN={route.params?.name}
+                      logoDetailN={route.params?.logoDetail}
+                      logoIcon={route.params?.logo}
+                    />
+                  )}
                 </View>
-                :
+              : (
                 <View style={{height: '100%', paddingHorizontal: 5}}>
                   <View style={styles.servicesDetail_containerButtons}>
-                    <TouchableOpacity style={[styles.servicesDetail_containerButton, { shadowOpacity: basicPlan ? 0 : 0.4 } ]} onPress={handleBasicPlan}>
-                      <Text style={styles.servicesDetail_containerButtonText}>Básico</Text>
+                    <TouchableOpacity
+                      style={[
+                        styles.servicesDetail_containerButton,
+                        {shadowOpacity: basicPlan ? 0 : 0.4},
+                      ]}
+                      onPress={handleBasicPlan}>
+                      <Text style={styles.servicesDetail_containerButtonText}>
+                        Básico
+                      </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.servicesDetail_containerButton, { shadowOpacity: !plusPlan ? 0.4 : 0 } ]}  onPress={handlePlusPlan}>
-                      <Text style={styles.servicesDetail_containerButtonText}>Plus</Text>
+                    <TouchableOpacity
+                      style={[
+                        styles.servicesDetail_containerButton,
+                        {shadowOpacity: !plusPlan ? 0.4 : 0},
+                      ]}
+                      onPress={handlePlusPlan}>
+                      <Text style={styles.servicesDetail_containerButtonText}>
+                        Plus
+                      </Text>
                     </TouchableOpacity>
                   </View>
-                  {basicPlan && 
-                    <CardPlans idN={route.params?.id} titleDescription={'Descripción'} description={route.params?.procedimientos[1].quirurgico.planes[0].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[0].planPrice} planN={'Básico'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
-                  }
-                  {plusPlan && 
-                    <CardPlans idN={route.params?.id} titleDescription={'Adicional'} description={route.params?.procedimientos[1].quirurgico.planes[1].planDescription} price={route.params?.procedimientos[1].quirurgico.planes[1].planPrice} planN={'Plus'} procedureTipeN={'Quirúrgico'} backgroundImgN={route.params?.backgroundImg} nameN={route.params?.name} logoDetailN={route.params?.logoDetail} logoIcon={route.params?.logo} />
-                  }
+                  {basicPlan && (
+                    <CardPlans
+                      idN={route.params?.id}
+                      titleDescription={'Descripción'}
+                      description={
+                        route.params?.procedimientos[1].quirurgico.planes[0]
+                          .planDescription
+                      }
+                      price={
+                        route.params?.procedimientos[1].quirurgico.planes[0]
+                          .planPrice
+                      }
+                      planN={'Básico'}
+                      procedureTipeN={'Quirúrgico'}
+                      backgroundImgN={route.params?.backgroundImg}
+                      nameN={route.params?.name}
+                      logoDetailN={route.params?.logoDetail}
+                      logoIcon={route.params?.logo}
+                    />
+                  )}
+                  {plusPlan && (
+                    <CardPlans
+                      idN={route.params?.id}
+                      titleDescription={'Adicional'}
+                      description={
+                        route.params?.procedimientos[1].quirurgico.planes[1]
+                          .planDescription
+                      }
+                      price={
+                        route.params?.procedimientos[1].quirurgico.planes[1]
+                          .planPrice
+                      }
+                      planN={'Plus'}
+                      procedureTipeN={'Quirúrgico'}
+                      backgroundImgN={route.params?.backgroundImg}
+                      nameN={route.params?.name}
+                      logoDetailN={route.params?.logoDetail}
+                      logoIcon={route.params?.logo}
+                    />
+                  )}
                 </View>
-              }
+              )}
             </View>
             :
             <View style={styles.servicesDetail_container_}>
               <View style={{height: '100%'}}>
-                  <CardPlansWebView titleDescription={'Descripción'} description={route.params?.descriptionL} price={route.params?.price} backgroundImg={route.params?.backgroundImg} name={route.params?.name} logoDetail={route.params?.logoDetail} url={route.params?.url} nameU= {userData.name} serviceU= {route.params?.name} logoIcon={route.params?.log} />
+                <CardPlansWebView
+                  titleDescription={'Descripción'}
+                  description={route.params?.descriptionL}
+                  price={route.params?.price}
+                  backgroundImg={route.params?.backgroundImg}
+                  name={route.params?.name}
+                  logoDetail={route.params?.logoDetail}
+                  url={route.params?.url}
+                  nameU={userData.name}
+                  serviceU={route.params?.name}
+                  logoIcon={route.params?.log}
+                />
               </View>
             </View>
           }
         </View>
         <View style={styles.servicesDetail_logo}>
-          <Image style={styles.servicesDetail_logoImg} source={route.params?.logoDetail} />
+          <Image
+            style={styles.servicesDetail_logoImg}
+            source={route.params?.logoDetail}
+          />
         </View>
       </View>
     </BottomSheetModalProvider>
   )
 }
 
-export default ServicesDetail
+export default ServicesDetail;
 
 const styles = StyleSheet.create({
   servicesDetail: {
@@ -148,7 +280,7 @@ const styles = StyleSheet.create({
   servicesDetail_headerImgBackground: {
     width: '100%',
     height: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   servicesDetail_Title: {
     marginTop: 110,
@@ -157,7 +289,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     maxWidth: 280,
     textAlign: 'center',
-    lineHeight: 30
+    lineHeight: 30,
   },
   servicesDetail_container: {
     height: '71%',
@@ -167,7 +299,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     alignItems: 'center',
     position: 'absolute',
-    bottom: 0
+    bottom: 0,
   },
   servicesDetail_container_: {
     width: '85%',
@@ -187,14 +319,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10
+    marginVertical: 10,
   },
   servicesDetail_procedureTipe_: {
     width: '97%',
     height: '75%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   servicesDetail_procedureSelected: {
     width: 150,
@@ -202,22 +334,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#676C74',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10
+    borderRadius: 10,
   },
   servicesDetail_procedureNoSelected: {
     width: 150,
     height: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   servicesDetail_containerTextTitle: {
     fontSize: 22,
     fontWeight: '500',
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
   },
   servicesDetail_containerButtons: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   servicesDetail_containerButton: {
     width: 80,
@@ -228,13 +360,13 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginVertical: 15,
     backgroundColor: '#96C4EA',
-    shadowColor: "#000",
-    shadowOffset: { height: 3 },
+    shadowColor: '#000',
+    shadowOffset: {height: 3},
     shadowRadius: 3,
   },
   servicesDetail_containerButtonText: {
     color: 'white',
-    fontWeight: '600'
+    fontWeight: '600',
   },
   servicesDetail_logo: {
     position: 'absolute',
@@ -244,10 +376,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    top: '21%'
+    top: '21%',
   },
   servicesDetail_logoImg: {
     width: 80,
-    height: 80
-  }
-})
+    height: 80,
+  },
+});
