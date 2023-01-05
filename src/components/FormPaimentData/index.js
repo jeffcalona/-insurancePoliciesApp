@@ -73,14 +73,14 @@ const FormPaimentData = ({ paimentVal }) => {
         </View>
         <View style={styles.paimentData_bottomCard}>
             <InputFormPaimentData title='Nombre en tarjeta' fieldName='nameCard' placeholder={nameInCard} style={styles.paimentData_bottomCardInputContainer} />
-            <InputFormPaimentData title='Número de la Tarjeta' fieldName='numCard' placeholder={numInCard} style={styles.paimentData_bottomCardInputContainer} />
+            <InputFormPaimentData title='Número de la Tarjeta'  keyboardType={'numeric'}  fieldName='numCard' placeholder={numInCard} style={styles.paimentData_bottomCardInputContainer} />
             <View style={styles.paimentData_bottomCardInfo}>
                 <View style={styles.paimentData_bottomCardInfo_}>
                     <View style={{ width: '40%' }}>
-                        <InputFormPaimentData title='Fecha Expedición' fieldName='expCard' placeholder={dateInCard}style={styles.paimentData_bottomCardInputContainerOtherOne} />
+                        <InputFormPaimentData title='Fecha Vencimiento' fieldName='expCard' placeholder={dateInCard}style={styles.paimentData_bottomCardInputContainerOtherOne} />
                     </View>
                     <View style={{ width: '40%' }}>
-                        <InputFormPaimentData title='CVC' fieldName='cvcCard' placeholder='XXX' style={styles.paimentData_bottomCardInputContainerOtherTwo} />
+                        <InputFormPaimentData title='CVC' fieldName='cvcCard' keyboardType={'numeric'} placeholder='XXX' style={styles.paimentData_bottomCardInputContainerOtherTwo} />
                     </View>
                 </View>
             </View>

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: 'rgba(27, 123, 204, .5)',
         marginBottom: 10,
+        marginTop: 10,
         alignItems: 'center'
     },
     inputAddDoctors_inputContainer_: {
@@ -45,8 +46,7 @@ const styles = StyleSheet.create({
         width: '90%'
     },
     inputAddDoctors_input: {
-        height: 30,
-        marginTop: 10,
+        height: 50,
         fontSize: 14
     }
 })

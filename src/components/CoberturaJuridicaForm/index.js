@@ -27,6 +27,7 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
     const [filter, setFilter] = useState([])
 
     useEffect( () => {
+        console.log(`${REACT_APP_USERDATABASE}/cobertura/doctors`)
         axios.get(`${REACT_APP_USERDATABASE}/cobertura/doctors`)
         .then(res => {
             const newFilter =  res.data.doctors.filter((elem) => {
