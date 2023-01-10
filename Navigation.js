@@ -112,14 +112,19 @@ function Tabs() {
                 tabBarActiveTintColor: '#1B7BCC',
                 tabBarInactiveTintColor: 'rgba(27, 123, 204, .3)',
                 unmountOnBlur: true,
+                tabBarLabelStyle: {
+                    paddingBottom: 20
+                },
                 tabBarStyle: {
                     borderTopColor: 'white',
-                    shadowOffset: {height: -3},
+                    shadowOffset: {height: -3,},
                     shadowColor: 'black',
                     shadowOpacity: 0.3,
+                    elevation: 8,
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
-                    height: 90,
+                    height: 80,
+                    paddingBottom: -40
                 }
             }}
         >
@@ -129,16 +134,16 @@ function Tabs() {
                   <HomeIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
                 headerShown: false,
-                tabBarStyle: {
-                    display: getTabBarVisibility(route),
-                    borderTopColor: 'white',
-                    shadowOffset: {height: -3},
-                    shadowColor: 'black',
-                    shadowOpacity: 0.3,
-                    borderTopLeftRadius: 30,
-                    borderTopRightRadius: 30,
-                    height: 90,
-                }
+                // tabBarStyle: {
+                //     display: getTabBarVisibility(route),
+                //     borderTopColor: 'white',
+                //     shadowOffset: {height: -3},
+                //     shadowColor: 'black',
+                //     shadowOpacity: 0.3,
+                //     borderTopLeftRadius: 30,
+                //     borderTopRightRadius: 30,
+                //     height: 90,
+                // },
             })} />
             <Tab.Screen name="CoberturaJuridicaStack" component={StackShoppingCartCobertura} options={({ route }) => ({
                 tabBarLabel: 'Coberturas',
@@ -149,31 +154,31 @@ function Tabs() {
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: .3 }} />
                 ),
                 headerShown: false,
-                tabBarStyle: {
-                    display: getTabBarVisibility(route),
-                    borderTopColor: 'white',
-                    shadowOffset: {height: -3},
-                    shadowColor: 'black',
-                    shadowOpacity: 0.3,
-                    borderTopLeftRadius: 30,
-                    borderTopRightRadius: 30,
-                    height: 90,
-                }
+                // tabBarStyle: {
+                //     display: getTabBarVisibility(route),
+                //     borderTopColor: 'white',
+                //     shadowOffset: {height: -3},
+                //     shadowColor: 'black',
+                //     shadowOpacity: 0.3,
+                //     borderTopLeftRadius: 30,
+                //     borderTopRightRadius: 30,
+                //     height: 90,
+                // }
             })} />
             <Tab.Screen name="AgregarServicios" component={Stacks} options={({ route }) => ({
-                tabBarStyle: {
-                    display: getTabBarVisibility(route),
-                    borderTopColor: 'white',
-                    shadowOffset: {height: -3},
-                    shadowColor: 'black',
-                    shadowOpacity: 0.3,
-                    borderTopLeftRadius: 30,
-                    borderTopRightRadius: 30,
-                    height: 90
-                },
+                // tabBarStyle: {
+                //     display: getTabBarVisibility(route),
+                //     borderTopColor: 'white',
+                //     shadowOffset: {height: -3},
+                //     shadowColor: 'black',
+                //     shadowOpacity: 0.3,
+                //     borderTopLeftRadius: 30,
+                //     borderTopRightRadius: 30,
+                //     height: 90
+                // },
                 tabBarLabel: 'Agregar',
                 tabBarIcon: () => (
-                  <AddCircle color='#1B7BCC'  variant="Bold" size={65} style={{ marginTop: -10, shadowOffset: {height: 4}, shadowColor: 'rgba(0, 0, 0, .8)', shadowOpacity: .3 }} />
+                  <AddCircle color='#1B7BCC' variant="Bold" size={65} style={{ marginTop: -15, shadowOffset: {height: 10}, shadowColor: 'rgba(0, 0, 0, .8)', shadowOpacity: .3 }} />
                 ),
                 headerShown: false
             })} />
@@ -182,16 +187,16 @@ function Tabs() {
                 tabBarIcon: ({ color }) => (
                   <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
-                tabBarStyle: {
-                    display: getTabBarVisibility(route),
-                    borderTopColor: 'white',
-                    shadowOffset: {height: -3},
-                    shadowColor: 'black',
-                    shadowOpacity: 0.3,
-                    borderTopLeftRadius: 30,
-                    borderTopRightRadius: 30,
-                    height: 90,
-                },
+                // tabBarStyle: {
+                //     display: getTabBarVisibility(route),
+                //     borderTopColor: 'white',
+                //     shadowOffset: {height: -3},
+                //     shadowColor: 'black',
+                //     shadowOpacity: 0.3,
+                //     borderTopLeftRadius: 30,
+                //     borderTopRightRadius: 30,
+                //     height: 90,
+                // },
                 headerShown: false
             })} />
             <Tab.Screen name="Máss" component={StackShoppingCartMas} options={({ route }) => ({
@@ -199,16 +204,16 @@ function Tabs() {
                 tabBarIcon: ({ color }) => (
                   <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
-                tabBarStyle: {
-                    display: getTabBarVisibility(route),
-                    borderTopColor: 'white',
-                    shadowOffset: {height: -3},
-                    shadowColor: 'black',
-                    shadowOpacity: 0.3,
-                    borderTopLeftRadius: 30,
-                    borderTopRightRadius: 30,
-                    height: 90,
-                },
+                // tabBarStyle: {
+                //     display: getTabBarVisibility(route),
+                //     borderTopColor: 'white',
+                //     shadowOffset: {height: -3},
+                //     shadowColor: 'black',
+                //     shadowOpacity: 0.3,
+                //     borderTopLeftRadius: 30,
+                //     borderTopRightRadius: 30,
+                //     height: 90,
+                // },
                 headerShown: false
             })} />
         </Tab.Navigator>

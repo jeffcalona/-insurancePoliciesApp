@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   servicesDetail_Title: {
-    marginTop: 110,
+    marginTop: 85,
     color: 'white',
     fontSize: 30,
     fontWeight: '800',
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
   servicesDetail_container: {
-    height: '71%',
+    height: '75%',
     width: '100%',
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
@@ -311,6 +311,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
+    color: 'black'
   },
   servicesDetail_procedureTipe: {
     width: '100%',
@@ -347,6 +348,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '500',
     paddingHorizontal: 5,
+    color: 'black'
   },
   servicesDetail_containerButtons: {
     flexDirection: 'row',
@@ -358,7 +360,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     marginRight: 10,
-    marginVertical: 15,
+    marginVertical: 5,
     backgroundColor: '#96C4EA',
     shadowColor: '#000',
     shadowOffset: {height: 3},
@@ -370,16 +372,16 @@ const styles = StyleSheet.create({
   },
   servicesDetail_logo: {
     position: 'absolute',
-    width: 110,
-    height: 110,
+    width: 90,
+    height: 90,
     backgroundColor: 'white',
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    top: '21%',
+    top: '18%',
   },
   servicesDetail_logoImg: {
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
   },
 });

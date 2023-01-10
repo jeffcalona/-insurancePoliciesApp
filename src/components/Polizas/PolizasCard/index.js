@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import BlindajeLogo from '../../../Assets/Icons/BlindajeLogo.png'
 
-const PolizasCard = ({ name, description }) => {
+const PolizasCard = ({ name, procedureTipe }) => {
   return (
     <View style={styles.polizasCard}>
         <View style={styles.polizasCard_}>
@@ -11,8 +11,8 @@ const PolizasCard = ({ name, description }) => {
             </View>
             <View style={styles.polizasCard_text}>
                 <View>
-                    <Text>{name}</Text>
-                    <Text>{description}</Text>
+                    <Text style={{color: 'black'}}>{name}</Text>
+                    <Text style={{color: 'rgba(0, 0, 0, .7)'}}>{procedureTipe}</Text>
                 </View>
                 <View>
                     <View style={styles.polizasCard_textOptions_}>
@@ -34,13 +34,14 @@ const styles = StyleSheet.create({
         height: 81,
         backgroundColor: 'white',
         borderRadius: 20,
-        marginVertical: 10,
+        marginVertical: 6,
         marginLeft: 3,
         alignItems: 'center',
         justifyContent: 'center',
         shadowOffset: {height: 4},
         shadowColor: 'black',
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        elevation: 5
     },
     polizasCard_: {
         width: '90%',

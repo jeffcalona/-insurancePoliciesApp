@@ -18,20 +18,25 @@ const More = () => {
 
     useEffect(() => {
         Navigation.setOptions({
-            headerLeft: () => (
-                <TouchableOpacity onPress={handlerModal}>
-                  <ProfileIcon color="black" variant="Linear" size={30} style={{ marginLeft: 20 }} />
-                </TouchableOpacity>
-              ),
-              headerRight: () => (
-                <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
-                    <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
-                </TouchableOpacity>
-              ),
-            headerStyle: {
-                borderBottomColor: 'white',
-                shadowOpacity: 0,
-            },
+          headerLeft: () => (
+              <TouchableOpacity onPress={handlerModal}>
+                <ProfileIcon color="black" variant="Linear" size={30} style={{ marginLeft: 20 }} />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
+                  <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
+              </TouchableOpacity>
+            ),
+          headerStyle: {
+              borderBottomColor: 'white',
+              shadowOpacity: 0,
+          },
+          //for android
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 16
+          },
         })
     }, [Navigation])
     

@@ -62,8 +62,10 @@ const CardPlans = ({
       <Text style={styles.servicesDetail_containerTitleDescription}>
         {titleDescription}
       </Text>
-      <ScrollView style={styles.servicesDetail_containerDescription}>
-        <Text>{description}</Text>
+      <View style={styles.servicesDetail_containerDescription}>
+        <ScrollView style={{maxHeight: 160}}>
+          <Text style={{color: 'black', fontSize: 12}}>{description}</Text>
+        </ScrollView>
         <View style={{width: "100%", padding: 10}}>
           <View style={styles.servicesDetail_containerTermsAndConditions}>
             {accept === false ? (
@@ -89,7 +91,6 @@ const CardPlans = ({
               </TouchableOpacity>
             </View>
           </View>
-
           <View style={{flexDirection: 'row', marginTop: 10}}>
             <Text style={{marginLeft: 5}}>Acepto </Text>
             <TouchableOpacity
@@ -114,7 +115,7 @@ const CardPlans = ({
             </BottomSheetModal>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </>
   );
 };
@@ -126,8 +127,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
     marginBottom: 10,
+    color: 'black'
   },
-  servicesDetail_containerDescription: {marginBottom: 150},
+  servicesDetail_containerDescription: {
+    marginBottom: 150 //Pendiente por revisar
+  },
   servicesDetail_containerTermsAndConditions: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -214,7 +214,12 @@ const ServicesScreen = () => {
       headerStyle: {
         borderBottomColor: 'white',
         shadowOpacity: 0, 
-      }
+      },
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
   }, [Navigation])
 

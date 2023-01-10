@@ -17,17 +17,18 @@ export default ServiceCard
 
 const styles = StyleSheet.create({
     serviceCard: {
-        width: 140,
-        height: 170,
+        width: 135,
+        height: 160,
         backgroundColor: '#1B7BCC',
         borderRadius: 20,
-        marginTop: 15,
+        marginTop: 10,
         marginRight: 15,
         alignItems: 'center',
         justifyContent: 'center',
         shadowOffset: {height: 4},
         shadowColor: 'black',
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        elevation: 7,
     },
     serviceCard_: {
       width: '90%',
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     },
     serviceCard_name: {
         color: 'white',
-        fontSize: 27,
+        fontSize: 26,
         fontWeight: '900',
         lineHeight: 26,
         textTransform: 'uppercase',

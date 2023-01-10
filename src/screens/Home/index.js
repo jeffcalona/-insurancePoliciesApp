@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useEffect, useRef } from 'react'
 import Publicity from '../../components/Publicity'
 import Services from '../../components/Services'
@@ -35,6 +35,11 @@ const Home = () => {
       headerStyle: {
         borderBottomColor: 'white',
         shadowOpacity: 0,
+      },
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
       },
     })
   }, [Navigation])

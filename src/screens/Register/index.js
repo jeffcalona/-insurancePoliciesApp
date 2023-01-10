@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native'
 import React from 'react'
 import AuthComponent from '../../components/AuthComponent'
 import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
@@ -13,9 +13,9 @@ const Register = () => {
       <View style={styles.loginContent}>
         <View style={styles.loginContent_}>
           <AuthComponent autContentTitle='Nuevo Usuario' />
-          <View style={styles.loginContent_inputs}>
+          <ScrollView style={styles.loginContent_inputs}>
             <AuthComponentRegister />
-          </View>
+          </ScrollView>
         </View>
       </View>
     </ImageBackground>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   login: {
-    height: '27%',
+    height: '25%',
     justifyContent: 'center',
   },
   login_title: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   loginContent: {
     width: '100%',
-    height: '73%',
+    height: '75%',
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,

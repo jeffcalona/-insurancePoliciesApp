@@ -34,7 +34,7 @@ const Services = () => {
     <View style={styles.services}>
         <View style={styles.services_}>
             <View style={styles.services_header}>
-                <Text>Nuestros Servicios</Text>
+                <Text style={{color: 'black'}}>Nuestros Servicios</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('AgregarServicios')} style={styles.services_headerButton}>
                     <Text style={styles.services_headerButtonText}>Ver Todos</Text>
                 </TouchableOpacity>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     services: {
         width: '90%',
         height: 215,
-        marginTop: 10,
+        marginTop: 5,
     },
     services_: {
         alignItems: 'center'
@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#1B7BCC',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 5
     },
     services_headerButtonText: {
         color: 'white'

@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         shadowOffset: {height: 4},
         shadowColor: 'black',
         shadowOpacity: 0.4,
+        elevation: 8,
         marginHorizontal: 20
     },
     publicityContent: {
@@ -50,10 +51,12 @@ const styles = StyleSheet.create({
     publicityContent_textTitle: {
         fontWeight: '800',
         fontSize: 18,
-        lineHeight: 22 
+        lineHeight: 22,
+        color: 'black'
     },
     publicityContent_textDescription: {
-        fontSize: 10
+        fontSize: 10,
+        color: 'black'
     },
     publicityContent_logo: {
         width: 75,
@@ -67,9 +70,10 @@ const styles = StyleSheet.create({
         height: 35,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 5
     },
     publicityContent_buttonText: {
-        color: 'white'
+        color: 'white',
     }
 })

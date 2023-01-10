@@ -24,35 +24,35 @@ const AuthComponentRegister = () => {
       <View style={styles.authComponentRegister}>
         <Text style={styles.authComponentRegister_title}>Nombre</Text>
         <View style={styles.authComponentRegister_content}>
-            <User size='20' color='black' />
+            <User size='20' color='black' style={{marginVertical: 8}} />
             <TextInput style={styles.authComponentRegister_componentInput} placeholder='Nombre Completo' placeholderTextColor='black' value={name} onChangeText={text => setName(text)} autoCapitalize='none' />
         </View>
       </View>
       <View style={styles.authComponentRegister}>
         <Text style={styles.authComponentRegister_title}>Identificación</Text>
         <View style={styles.authComponentRegister_content}>
-            <Hashtag size='20' color='black' />
+            <Hashtag size='20' color='black' style={{marginVertical: 8}} />
             <TextInput style={styles.authComponentRegister_componentInput} placeholder='Número de identificación' placeholderTextColor='black' value={identification} onChangeText={text => setIdentification(text)} autoCapitalize='none' />
         </View>
       </View>
       <View style={styles.authComponentRegister}>
         <Text style={styles.authComponentRegister_title}>Email</Text>
         <View style={styles.authComponentRegister_content}>
-            <MessageText size='20' color='black' />
+            <MessageText size='20' color='black' style={{marginVertical: 8}} />
             <TextInput style={styles.authComponentRegister_componentInput} placeholder='Correo Electrónico' placeholderTextColor='black' value={email} onChangeText={text => setEmail(text)} autoCapitalize='none' />
         </View>
       </View>
       <View style={styles.authComponentRegister}>
         <Text style={styles.authComponentRegister_title}>Contraseña</Text>
         <View style={styles.authComponentRegister_content}>
-            <PasswordCheck size='20' color='black' />
+            <PasswordCheck size='20' color='black' style={{marginVertical: 8}} />
             <TextInput style={styles.authComponentRegister_componentInput} placeholder='*********' placeholderTextColor='black' value={password} onChangeText={text => setPassword(text)} autoCapitalize='none' />
         </View>
       </View>
       <View style={styles.authComponentRegister}>
         <Text style={styles.authComponentRegister_title}>Repita Contraseña</Text>
         <View style={styles.authComponentRegister_content}>
-            <PasswordCheck size='20' color='black' />
+            <PasswordCheck size='20' color='black' style={{marginVertical: 8}} />
             <TextInput style={styles.authComponentRegister_componentInput} placeholder='*********' placeholderTextColor='black' value={password_confirmation} onChangeText={text => setRepeatPassword_confirmation(text)} autoCapitalize='none' />
         </View>
       </View>
@@ -79,15 +79,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 2,
         borderBottomColor: 'rgba(27, 123, 204, .5)',
-        paddingVertical: 10,
-        justifyContent: 'space-between'
+        // paddingVertical: 10,
+        justifyContent: 'space-between',
+        //for android
+        alignItems: 'center'
     },
     authComponentRegister_componentInput: {
         width: '90%',
     },
     authComponentRegister_buttonContent: {
         alignItems: 'center',
-        marginTop: 20
+        // marginTop: 20,
+        marginVertical: 20
     },
     authComponentRegister_button: {
         width: '80%',

@@ -39,6 +39,11 @@ const CoberturaJuridica = () => {
         borderBottomColor: 'white',
         shadowOpacity: 0,
       },
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
   }, [Navigation])
 
@@ -58,7 +63,7 @@ const CoberturaJuridica = () => {
           <Profile />
         </BottomSheetModal>
         <View style={styles.coberturaJuridica_}>
-          <FlatList data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} description={item.plan} />} showsVerticalScrollIndicator={false} />
+          <FlatList data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} procedureTipe={item.procedureTipe} />} showsVerticalScrollIndicator={false} />
         </View>
       </View>
     </BottomSheetModalProvider>

@@ -32,13 +32,13 @@ const Polizas = () => {
     <View style={styles.policies}>
         <View style={styles.policies_}>
             <View style={styles.policies_header}>
-                <Text>Mis Pólizas</Text>
+                <Text style={{color: 'black'}}>Mis Pólizas</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('MyPolices')} style={styles.policies_headerButton}>
                     <Text style={styles.policies_headerButtonText}>Ver Todas</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.policies_cards}>
-                <FlatList style={styles.policies_cards_} data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} description={item.plan} />} showsVerticalScrollIndicator={false} />
+                <FlatList style={styles.policies_cards_} data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} procedureTipe={item.procedureTipe} />} showsVerticalScrollIndicator={false} />
             </View>
         </View>
     </View>
@@ -50,11 +50,12 @@ export default Polizas
 const styles = StyleSheet.create({
     policies: {
         width: '90%',
-        height: 210,
-        marginTop: 20,
+        height: 250,
+        marginTop: 5,
     },
     policies_: {
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 20
     },
     policies_header: {
         width: '90%',
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#1B7BCC',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 5
     },
     policies_headerButtonText: {
         color: 'white'

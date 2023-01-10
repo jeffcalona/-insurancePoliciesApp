@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         shadowOffset: {height: 4},
         shadowColor: 'black',
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        elevation: 5
     },
     servicesCardScreen_: {
         width: '93%',
@@ -77,28 +78,32 @@ const styles = StyleSheet.create({
         marginLeft: 8,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     servicesCardScreen_text_: {
-        width: 150
+        width: 145,
     },
     servicesCardScreen_textTitle: {
         fontSize: 15,
         fontWeight: '800',
-        lineHeight: 16
+        lineHeight: 16,
+        color: 'black'
     },
     servicesCardScreen_textDescripcion: {
         fontSize: 11,
         fontWeight: '300',
-        lineHeight: 11
+        lineHeight: 11,
+        color: 'black'
     },
     servicesCardScreen_textDesde: {
         fontSize: 13,
-        fontWeight: '300'
+        fontWeight: '300',
+        color: 'black'
     },
     servicesCardScreen_textPrice: {
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '600',
+        color: 'black'
     },
     servicesCardCard_textActive: {
         backgroundColor: '#04CD00',
@@ -109,7 +114,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         shadowOffset: {height: 4},
         shadowColor: 'black',
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        elevation: 5
     },
     servicesCardCard_textDisabled: {
         backgroundColor: '#FFD600',
@@ -120,7 +126,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         shadowOffset: {height: 4},
         shadowColor: 'black',
-        shadowOpacity: 0.4
+        shadowOpacity: 0.4,
+        elevation: 5
     },
     servicesCardCard_textButton: {
         color: 'white',

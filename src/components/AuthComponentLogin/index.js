@@ -15,14 +15,14 @@ const AuthComponentLogin = () => {
         <View style={styles.authComponentLogin}>
             <Text style={styles.authComponentLogin_title}>Email</Text>
             <View style={styles.authComponentLogin_content_}>
-                <MessageText size='20' color='black' />
+                <MessageText size='20' color='black' style={{marginVertical: 8}} />
                 <TextInput style={styles.authComponentLogin_contentInput} placeholder='Correo Electrónico' placeholderTextColor='black' value={email} onChangeText={text => setEmail(text)} autoCapitalize='none' />
             </View>
         </View>
         <View style={styles.authComponentLogin}>
             <Text style={styles.authComponentLogin_title}>Contraseña</Text>
             <View style={styles.authComponentLogin_content_}>
-                <MessageText size='20' color='black' />
+                <MessageText size='20' color='black' style={{marginVertical: 8}} />
                 <TextInput style={styles.authComponentLogin_contentInput} placeholder='*********' placeholderTextColor='black' value={password} onChangeText={text => setPassword(text)} autoCapitalize='none' />
             </View>
         </View>
@@ -49,8 +49,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 2,
         borderBottomColor: 'rgba(27, 123, 204, .5)',
-        paddingVertical: 10,
-        justifyContent: 'space-between'
+        // paddingVertical: 10,
+        alignItems: 'center',
+        //add for android
+        justifyContent: 'space-between',
     },
     authComponentLogin_contentInput: {
         width: '90%',

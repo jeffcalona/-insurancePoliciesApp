@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     onBoarding_title: {
-        width: 300,
+        width: 290,
         fontSize: 34,
         textAlign: 'center',
         lineHeight: 38,

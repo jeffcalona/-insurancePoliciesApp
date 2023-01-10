@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
       fontSize: 25,
       width: 150,
       fontWeight: '700',
-      lineHeight: 24
+      lineHeight: 24,
+      color: 'black'
   },
 })

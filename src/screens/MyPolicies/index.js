@@ -39,6 +39,11 @@ const MyPolicies = () => {
         borderBottomColor: 'white',
         shadowOpacity: 0,
       },
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
   }, [Navigation])
 
@@ -59,7 +64,7 @@ const MyPolicies = () => {
       </BottomSheetModal>
       <View style={styles.myPolices}>
         <View style={styles.myPolices_}>
-          <FlatList data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} description={item.plan} />} showsVerticalScrollIndicator={false} />
+          <FlatList data={allCobertures} keyExtractor={(item) => item.id} renderItem={({ item }) => <PolizasCard name={item.fullNameP} procedureTipe={item.procedureTipe} />} showsVerticalScrollIndicator={false} />
         </View>
       </View>
     </BottomSheetModalProvider>
