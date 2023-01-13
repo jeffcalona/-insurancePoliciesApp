@@ -5,7 +5,7 @@ import { useField } from 'formik'
 const InputFormPaimentData = ({ fieldName, title, style, ...props }) => {
     const [field, meta] = useField(fieldName)
   return (
-    <View>
+    <>
         <View style={style}>
             <Text style={styles.paimentData_infoCardText}>{title}</Text>
             <TextInput
@@ -24,7 +24,7 @@ const InputFormPaimentData = ({ fieldName, title, style, ...props }) => {
                 <Text style={styles.inputFormPaimentData_error_}>{meta.error}</Text>
             </View>
         ): null}
-    </View >
+    </ >
   )
 }
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         width: '95%',
         fontSize: 14,
         fontWeight: '600',
-        marginBottom: 10,
+        marginBottom: 5,
     },
     paimentData_infoCardInputLarge: {
         width: '95%',

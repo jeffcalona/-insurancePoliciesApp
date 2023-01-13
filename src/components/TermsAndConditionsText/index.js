@@ -153,9 +153,11 @@ const styles = StyleSheet.create({
     termsAndConditions_containerTitle: {
         fontSize: 14,
         fontWeight: '600',
-        marginBottom: 10
+        marginBottom: 10,
+        color: 'black'
     },
     termsAndConditions_containerText: {
-        fontSize: 12
+        fontSize: 12,
+        color: 'black'
     },
 })

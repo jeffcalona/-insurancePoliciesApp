@@ -5,6 +5,7 @@ import {
   Text,
   Dimensions,
   View,
+  ScrollView,
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
@@ -40,6 +41,11 @@ const ServicesDetail = ({route}) => {
       headerTransparent: true,
       headerTintColor: 'white',
       headerBackTitleVisible: false,
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     });
   }, [navigation]);
 
@@ -320,7 +326,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical: 5,
   },
   servicesDetail_procedureTipe_: {
     width: '97%',
@@ -345,7 +351,7 @@ const styles = StyleSheet.create({
   },
 
   servicesDetail_containerTextTitle: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '500',
     paddingHorizontal: 5,
     color: 'black'

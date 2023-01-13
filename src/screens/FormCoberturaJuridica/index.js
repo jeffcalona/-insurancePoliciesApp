@@ -20,7 +20,12 @@ const FormCoberturaJuridica = ({ route }) => {
       headerTitle: 'Formulario',
       headerTransparent: true,
       headerTintColor: 'white',
-      headerBackTitleVisible: false
+      headerBackTitleVisible: false,
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
 
     setId(route.params?.id)
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   formCoberturaJuridica_title: {
-    marginTop: 110,
+    marginTop: '22%',
     color: 'white',
     fontSize: 22,
     fontWeight: '700',

@@ -11,6 +11,8 @@ export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState(null)
     const [userToken, setUserToken] = useState(null)
 
+    const [loadingScreen, setLoadingScreen] = useState(false)
+
     const [shopping, setShopping] = useState([])
     const [total, setTotal] = useState(0)
     console.log('Carrito de compraaa: ', shopping)
@@ -61,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = (email, password) => {
         setIsLoading(true)
-        
+        setLoadingScreen(true)
         axios.post(`${REACT_APP_USERDATABASE}/login`, {
                 email, 
                 password
@@ -74,7 +76,7 @@ export const AuthProvider = ({ children }) => {
             AsyncStorage.setItem('userData', JSON.stringify(userData))
             AsyncStorage.setItem('userToken', userData.token)
             setIsLoading(false)
-
+            setLoadingScreen(false)
         }).catch(e => {
             console.log(e)
         })
@@ -82,10 +84,12 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = (name, identification, email, password, password_confirmation) => {
+        setLoadingScreen(true)
         axios.post(`${REACT_APP_USERDATABASE}/register`, {
             name, identification, email, password, password_confirmation
         }).then(res => {
             console.log('usuario registrado')
+            setLoadingScreen(false)
         }).catch(e => {
             console.log(e)
         })
@@ -130,7 +134,7 @@ export const AuthProvider = ({ children }) => {
     }, [shopping])
 
     return (
-        <AuthContext.Provider value={{ login, register, logout, isLoading, userToken, userData, setShopping, shopping, total, setTotal }}>
+        <AuthContext.Provider value={{ login, register, logout, isLoading, userToken, userData, setShopping, shopping, total, setTotal, setLoadingScreen, loadingScreen }}>
             {children}
         </AuthContext.Provider>
     )

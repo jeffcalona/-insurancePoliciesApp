@@ -34,13 +34,15 @@ const styles = StyleSheet.create({
     },
     formCoberturaJuridica_containerText: {
         fontSize: 12,
-        opacity: .5
+        opacity: .5,
+        color: 'black'
     },
     formCoberturaJuridica_inputContainer: {
         flexDirection: 'row',
         borderBottomWidth: 2,
         borderBottomColor: 'rgba(27, 123, 204, .5)',
-        paddingVertical: 10,
+        // paddingVertical: 10,
+        alignItems: 'center',
         justifyContent: 'space-between'
     },
     formCoberturaJuridica_input: {

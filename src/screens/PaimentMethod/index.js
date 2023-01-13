@@ -51,7 +51,7 @@ const ShoppingCartCobertura = ({ route }) => {
         doctorsSelectedId: route.params?.doctorsSelectedId,
         logoIcon: route.params?.logoIcon,
       }
-      setShopping([shoppingCartData])
+      setShopping([...shopping, shoppingCartData])
     }
     
 
@@ -73,7 +73,7 @@ const ShoppingCartCobertura = ({ route }) => {
         doctorsSelectedId: route.params?.doctorsSelectedId,
         logoIcon: route.params?.logoIcon,
       }
-      setShopping([shoppingCartData])
+      setShopping([...shopping, shoppingCartData])
     }
     
 
@@ -86,15 +86,18 @@ const ShoppingCartCobertura = ({ route }) => {
       headerTitle: 'Método de Pago',
       headerTransparent: true,
       headerBackTitleVisible: false,
-      headerTintColor: 'black'
+      headerTintColor: 'black',
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
-  }, [])
+  }, [navigation])
 
   return (
     <View style={styles.shoppingCartCoberturaContainer}>
       <View style={styles.shoppingCartCobertura}>
-
-     
            {
             route.params?.car &&
             <TouchableOpacity style={styles.shoppingCartCobertura_method} onPress={addShoppingCart}>
@@ -107,11 +110,7 @@ const ShoppingCartCobertura = ({ route }) => {
                 <ArrowRight2 size={25} color='#1B7BCC' />
               </View>
             </TouchableOpacity>
-    
            } 
-
-
-
         <TouchableOpacity style={openPaimentMethod ? styles.shoppingCartCobertura_methodOpen : styles.shoppingCartCobertura_method} onPress={() => setOpenPaimentMethod(!openPaimentMethod)}>
           <View style={openPaimentMethod ? styles.shoppingCartCobertura_method_open : styles.shoppingCartCobertura_method_}>
             <Shop size={30} color={openPaimentMethod ? 'white' : 'black'} />
@@ -177,7 +176,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 15
+    marginTop: 15,
+    elevation: 5
   },
   shoppingCartCobertura_method_:{
     width: '85%',
@@ -188,12 +188,14 @@ const styles = StyleSheet.create({
   shoppingCartCobertura_methodFirstText: {
     fontSize: 12,
     fontWeight: '600',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'black'
   },
   shoppingCartCobertura_methodSecondText: {
     fontSize: 12,
     fontWeight: '300',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'black'
   },
   shoppingCartCobertura_methodNequi: {
     width: 125,
@@ -219,13 +221,12 @@ const styles = StyleSheet.create({
   shoppingCartCobertura_methodOpen: {
     height: 300,
     backgroundColor: '#1B7BCC',
-
     borderRadius: 20,
     shadowOffset: {height: 4},
     shadowColor: 'black',
     shadowOpacity: 0.4,
     alignItems: 'center',
-    marginTop: 25
+    marginTop: 25,
   },
   shoppingCartCobertura_method_open: {
     marginTop: 20,

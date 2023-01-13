@@ -1,24 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ImageBackground, StyleSheet, View, Text } from 'react-native'
 import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
 import AuthComponent from '../../components/AuthComponent'
 import AuthComponentLogin from '../../components/AuthComponentLogin'
+import { AuthContext } from '../../Context/AuthContext'
+import LoadingScreen from '../LoadingScreen'
 
 const Login = () => {
+  const {loadingScreen} = useContext(AuthContext)
 
   return (
     <ImageBackground source={AuthBackgroundImg} style={styles.authBackgroundImg}>
-      <View style={styles.login}>
-        <Text style={styles.login_title}>Blindaje Quirúrgico</Text>
-      </View>
-      <View style={styles.loginContent}>
-        <View style={styles.loginContent_}>
-          <AuthComponent autContentTitle='Bienveniedo de Vuelta' />
-          <View style={styles.loginContent_inputs}>
-            <AuthComponentLogin />
+      {loadingScreen === true ?
+        <>
+          <LoadingScreen />
+        </>
+        :
+        <>
+          <View style={styles.login}>
+            <Text style={styles.login_title}>Blindaje Quirúrgico</Text>
           </View>
-        </View>
-      </View>
+          <View style={styles.loginContent}>
+            <View style={styles.loginContent_}>
+              <AuthComponent autContentTitle='Bienveniedo de Vuelta' />
+              <View style={styles.loginContent_inputs}>
+                <AuthComponentLogin />
+              </View>
+            </View>
+          </View>
+        </>
+      }
     </ImageBackground>
   )
 }

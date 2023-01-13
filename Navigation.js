@@ -27,6 +27,7 @@ import PaymentNequi from "./src/screens/PaymentNequi";
 import PaymentSummary from "./src/screens/PaymentSummary";
 import More from './src/screens/More'
 import ShoppingCart from "./src/screens/ShoppingCart";
+import LoadingScreen from "./src/screens/LoadingScreen";
 
 //staks
 const ServicesScreenStack = createNativeStackNavigator()
@@ -41,7 +42,14 @@ function Stacks() {
             <ServicesScreenStack.Screen name="PaimentMethod" component={ShoppingCartCobertura} />
             <ServicesScreenStack.Screen name='PaimentData' component={PaimentData} />
             <ServicesScreenStack.Screen name='PaymentNequi' component={PaymentNequi} />
-            <ServicesScreenStack.Screen name='PaymentSummary' component={PaymentSummary} />
+            <ServicesScreenStack.Screen name='PaymentSummary' component={PaymentSummary} options={() => ({
+                headerTitle: 'Resumen de pago',
+                //for android
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                    fontSize: 16
+                },
+            })} />
             <StackShppingCard.Screen name="ShoppingCart" component={ShoppingCart} />
         </ServicesScreenStack.Navigator>
     )
@@ -134,16 +142,18 @@ function Tabs() {
                   <HomeIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
                 headerShown: false,
-                // tabBarStyle: {
-                //     display: getTabBarVisibility(route),
-                //     borderTopColor: 'white',
-                //     shadowOffset: {height: -3},
-                //     shadowColor: 'black',
-                //     shadowOpacity: 0.3,
-                //     borderTopLeftRadius: 30,
-                //     borderTopRightRadius: 30,
-                //     height: 90,
-                // },
+                tabBarStyle: {
+                     display: getTabBarVisibility(route),
+                     borderTopColor: 'white',
+                     shadowOffset: {height: -3,},
+                     shadowColor: 'black',
+                     shadowOpacity: 0.3,
+                     elevation: 8,
+                     borderTopLeftRadius: 30,
+                     borderTopRightRadius: 30,
+                     height: 80,
+                     paddingBottom: -40
+                },
             })} />
             <Tab.Screen name="CoberturaJuridicaStack" component={StackShoppingCartCobertura} options={({ route }) => ({
                 tabBarLabel: 'Coberturas',
@@ -154,28 +164,32 @@ function Tabs() {
                   <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: .3 }} />
                 ),
                 headerShown: false,
-                // tabBarStyle: {
-                //     display: getTabBarVisibility(route),
-                //     borderTopColor: 'white',
-                //     shadowOffset: {height: -3},
-                //     shadowColor: 'black',
-                //     shadowOpacity: 0.3,
-                //     borderTopLeftRadius: 30,
-                //     borderTopRightRadius: 30,
-                //     height: 90,
-                // }
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3,},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    elevation: 8,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 80,
+                    paddingBottom: -40
+               },
             })} />
             <Tab.Screen name="AgregarServicios" component={Stacks} options={({ route }) => ({
-                // tabBarStyle: {
-                //     display: getTabBarVisibility(route),
-                //     borderTopColor: 'white',
-                //     shadowOffset: {height: -3},
-                //     shadowColor: 'black',
-                //     shadowOpacity: 0.3,
-                //     borderTopLeftRadius: 30,
-                //     borderTopRightRadius: 30,
-                //     height: 90
-                // },
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3,},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    elevation: 8,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 80,
+                    paddingBottom: -40
+               },
                 tabBarLabel: 'Agregar',
                 tabBarIcon: () => (
                   <AddCircle color='#1B7BCC' variant="Bold" size={65} style={{ marginTop: -15, shadowOffset: {height: 10}, shadowColor: 'rgba(0, 0, 0, .8)', shadowOpacity: .3 }} />
@@ -187,16 +201,18 @@ function Tabs() {
                 tabBarIcon: ({ color }) => (
                   <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
-                // tabBarStyle: {
-                //     display: getTabBarVisibility(route),
-                //     borderTopColor: 'white',
-                //     shadowOffset: {height: -3},
-                //     shadowColor: 'black',
-                //     shadowOpacity: 0.3,
-                //     borderTopLeftRadius: 30,
-                //     borderTopRightRadius: 30,
-                //     height: 90,
-                // },
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3,},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    elevation: 8,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 80,
+                    paddingBottom: -40
+               },
                 headerShown: false
             })} />
             <Tab.Screen name="Máss" component={StackShoppingCartMas} options={({ route }) => ({
@@ -204,16 +220,18 @@ function Tabs() {
                 tabBarIcon: ({ color }) => (
                   <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
                 ),
-                // tabBarStyle: {
-                //     display: getTabBarVisibility(route),
-                //     borderTopColor: 'white',
-                //     shadowOffset: {height: -3},
-                //     shadowColor: 'black',
-                //     shadowOpacity: 0.3,
-                //     borderTopLeftRadius: 30,
-                //     borderTopRightRadius: 30,
-                //     height: 90,
-                // },
+                tabBarStyle: {
+                    display: getTabBarVisibility(route),
+                    borderTopColor: 'white',
+                    shadowOffset: {height: -3,},
+                    shadowColor: 'black',
+                    shadowOpacity: 0.3,
+                    elevation: 8,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                    height: 80,
+                    paddingBottom: -40
+               },
                 headerShown: false
             })} />
         </Tab.Navigator>
@@ -239,6 +257,12 @@ const getTabBarVisibility = (route) => {
         case 'PaimentData':
             return 'none';
             break
+        case 'PaymentSummary':
+            return 'none';
+            break
+        case 'PaymentNequi':
+        return 'none';
+        break
         case 'ShoppingCart':
             return 'none';
             break;
@@ -254,9 +278,12 @@ export default function Navigation() {
 
     if (isLoading) {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <ActivityIndicator size={'large'} />
-            </View>
+            // <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            //     <ActivityIndicator size={'large'} />
+            // </View>
+            <>
+                <LoadingScreen />
+            </>
         )
     }
 

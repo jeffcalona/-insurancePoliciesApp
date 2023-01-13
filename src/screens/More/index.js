@@ -7,7 +7,7 @@ import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet
 import Profile from '../Profile'
 
 const More = () => {
-    const {userData} = useContext(AuthContext)
+    const {userData, shopping} = useContext(AuthContext)
     const Navigation = useNavigation()
     const bottomSheetModalProfileRef = useRef(null)
     const snapModalPoint = ["100"]
@@ -24,8 +24,15 @@ const More = () => {
               </TouchableOpacity>
             ),
             headerRight: () => (
-              <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
-                  <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
+              <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")} style={{position: 'relative'}}>
+              <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
+                {shopping.length > 0 ?
+                  <View style={{position: 'absolute', right: 10, top: -7, backgroundColor: '#1B7BCC', height: 22, width: 22, borderRadius: 50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontSize: 12}}>{shopping.length}</Text>
+                  </View>
+                  :
+                  null
+                }
               </TouchableOpacity>
             ),
           headerStyle: {
@@ -38,7 +45,7 @@ const More = () => {
             fontSize: 16
           },
         })
-    }, [Navigation])
+    }, [Navigation, shopping])
     
   return (
     <BottomSheetModalProvider>
@@ -47,7 +54,7 @@ const More = () => {
             <Profile />
         </BottomSheetModal>
         <View style={{alignItems: 'center', marginTop: 100}}>
-          <Text>Publicidades y contenido adicional</Text>
+          <Text style={{color: 'black'}}>Publicidades y contenido adicional</Text>
         </View>
       </View>
     </BottomSheetModalProvider>

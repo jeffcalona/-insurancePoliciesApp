@@ -5,6 +5,7 @@ import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
 import AuthComponentRegister from '../../components/AuthComponentRegister'
 
 const Register = () => {
+
   return (
     <ImageBackground source={AuthBackgroundImg} style={styles.authBackgroundImg}>
       <View style={styles.login}>
@@ -13,7 +14,7 @@ const Register = () => {
       <View style={styles.loginContent}>
         <View style={styles.loginContent_}>
           <AuthComponent autContentTitle='Nuevo Usuario' />
-          <ScrollView style={styles.loginContent_inputs}>
+          <ScrollView style={styles.loginContent_inputs} showsVerticalScrollIndicator={false}>
             <AuthComponentRegister />
           </ScrollView>
         </View>

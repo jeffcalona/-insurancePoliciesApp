@@ -7,6 +7,8 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import FormPaimentData from '../../components/FormPaimentData'
 import { AuthContext } from '../../Context/AuthContext'
+import LoadingScreen from '../LoadingScreen'
+
 const PaimentData = ({ route, ...props }) => {
   const {setShopping, shopping} = useContext(AuthContext)
   const [acceptance_token, setacceptance_token]  = useState(false)
@@ -65,8 +67,7 @@ const PaimentData = ({ route, ...props }) => {
             "token": token_card,
             "installments": 1,
         }
-
-
+        
         navigation.navigate("PaymentSummary", {
           randomCode : Math.random(),
           amount_in_cents  : price,
@@ -75,7 +76,6 @@ const PaimentData = ({ route, ...props }) => {
           data_card,
           acceptance_token : acceptance_token,
       })
-
 
       }).catch(function (error) {
         console.log('Error al enviar formulario')
@@ -118,13 +118,17 @@ const PaimentData = ({ route, ...props }) => {
 
     useEffect(() => {
         navigation.setOptions({
-            headerTitle: `Datos de la ${route.params?.tipePaiment}`,
+            headerTitle: 'Datos de la tarjeta',
             headerTransparent: true,
             headerBackTitleVisible: false,
-            headerTintColor: 'white'
+            headerTintColor: 'white',
+            //for android
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontSize: 16
+            },
         })
-        
-        }, [])
+        }, [navigation])
 
   return (
     <View style={styles.paimentData}>

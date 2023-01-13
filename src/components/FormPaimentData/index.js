@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import InputFormPaimentData from '../InputFormPaimentData'
 import { useFormikContext } from 'formik'
@@ -7,6 +7,7 @@ import LogoVisa from '../../Assets/Icons/LogoVisa.png'
 import LogoMastercardBlack from '../../Assets/Icons/LogoMastercardBlack.png'
 import LogoVisaBlack from '../../Assets/Icons/LogoVisaBlack.png'
 import { AuthContext } from '../../Context/AuthContext'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const FormPaimentData = ({ paimentVal }) => {
     const { submitForm, ...props } = useFormikContext()
@@ -51,7 +52,7 @@ const FormPaimentData = ({ paimentVal }) => {
     }
     
   return (
-    <>
+    <KeyboardAwareScrollView style={styles.keyboardAwareScrollView_style}>
         <View style={styles.paimentData_top}>
             <View style={styles.paimentData_topCard}>
                 <View style={styles.paimentData_topCard_}>
@@ -71,42 +72,50 @@ const FormPaimentData = ({ paimentVal }) => {
                 </View>
             </View>
         </View>
-        <View style={styles.paimentData_bottomCard}>
-            <InputFormPaimentData title='Nombre en tarjeta' fieldName='nameCard' placeholder={nameInCard} style={styles.paimentData_bottomCardInputContainer} />
-            <InputFormPaimentData title='Número de la Tarjeta'  keyboardType={'numeric'}  fieldName='numCard' placeholder={numInCard} style={styles.paimentData_bottomCardInputContainer} />
-            <View style={styles.paimentData_bottomCardInfo}>
-                <View style={styles.paimentData_bottomCardInfo_}>
-                    <View style={{ width: '40%' }}>
-                        <InputFormPaimentData title='Fecha Vencimiento' fieldName='expCard' placeholder={dateInCard}style={styles.paimentData_bottomCardInputContainerOtherOne} />
+        <View style={{width: '100%', height: '55%', alignItems: 'center'}}>
+            <View style={styles.paimentData_bottomCard} >
+                <InputFormPaimentData title='Nombre en tarjeta' fieldName='nameCard' placeholder={nameInCard} style={styles.paimentData_bottomCardInputContainer} />
+                <InputFormPaimentData title='Número de la Tarjeta'  keyboardType={'numeric'}  fieldName='numCard' placeholder={numInCard} style={styles.paimentData_bottomCardInputContainer} />
+                <View style={styles.paimentData_bottomCardInfo}>
+                    <View style={styles.paimentData_bottomCardInfo_}>
+                        <View style={{ width: '40%' }}>
+                            <InputFormPaimentData title='Fecha Vencimiento' fieldName='expCard' placeholder={dateInCard}style={styles.paimentData_bottomCardInputContainerOtherOne} />
+                        </View>
+                        <View style={{ width: '40%' }}>
+                            <InputFormPaimentData title='CVC' fieldName='cvcCard' keyboardType={'numeric'} placeholder='XXX' style={styles.paimentData_bottomCardInputContainerOtherTwo} />
+                        </View>
                     </View>
-                    <View style={{ width: '40%' }}>
-                        <InputFormPaimentData title='CVC' fieldName='cvcCard' keyboardType={'numeric'} placeholder='XXX' style={styles.paimentData_bottomCardInputContainerOtherTwo} />
-                    </View>
+                </View>
+                <View style={{width: '100%', alignItems: 'center'}}>
+                    <TouchableOpacity style={styles.paimentData_paimentButton} onPress={submitForm}>
+                        <Text style={styles.paimentData_paimentButtonText}>pagar ${total}.000</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
-        <TouchableOpacity style={styles.paimentData_paimentButton} onPress={submitForm}>
-            <Text style={styles.paimentData_paimentButtonText}>pagar ${total}.000</Text>
-        </TouchableOpacity>
-    </>
+    </KeyboardAwareScrollView>
   )
 }
 
 export default FormPaimentData
 
 const styles = StyleSheet.create({
+    keyboardAwareScrollView_style: {
+        width: '100%',
+        height: '100%'
+    },
     paimentData_top: {
         width: '100%',
-        height: 355,
+        height: '45%',
         backgroundColor: '#1B7BCC',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     paimentData_topCard: {
         width: '90%',
         height: 200,
         backgroundColor: 'white',
         borderRadius: 20,
-        marginTop: 120,
+        marginTop: 70,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -148,7 +157,8 @@ const styles = StyleSheet.create({
     },
     paimentData_bottomCard: {
         width: '80%',
-        marginTop: 40
+        height: '100%',
+        marginTop: 10,
     },
     paimentData_bottomCardInputContainer: {
         width: '100%',
@@ -165,7 +175,8 @@ const styles = StyleSheet.create({
     paimentData_bottomCardInfo_: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
     },
     paimentData_bottomCardInputContainerOtherOne: {
         width: '100%',
@@ -182,7 +193,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     paimentData_paimentButton: {
-        marginTop: 30,
+        marginTop: 20,
+        marginBottom: 50,
         width: '80%',
         height: 60,
         backgroundColor: '#1B7BCC',

@@ -27,7 +27,7 @@ const FormPaimentData = ({ paimentVal }) => {
             <InputFormPaimentData title='Número Telefonico' fieldName='numberPhone' keyboardType={'numeric'} placeholder={nameInCard} style={styles.paimentData_bottomCardInputContainer} />
         </View>
         <TouchableOpacity style={styles.paimentData_paimentButton} onPress={submitForm}>
-            <Text style={styles.paimentData_paimentButtonText}>pagar ${total}.000</Text>
+            <Text style={styles.paimentData_paimentButtonText}>Pagar ${total}.000</Text>
         </TouchableOpacity>
     </>
   )

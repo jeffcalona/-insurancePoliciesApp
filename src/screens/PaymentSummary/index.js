@@ -18,7 +18,6 @@ function Index(props){
  
     const [RefferedPay, setRefferedPay] = useState();
       
-
     const { navigation } = props
 
 
@@ -54,8 +53,6 @@ function Index(props){
       console.log(props.route.params.id_fee, "FEE")
 
     }, [randomCode])
-
-
 
 
 
@@ -111,12 +108,6 @@ function Index(props){
 
 
 
-
-
-
-      
-
-
     function verifyTransaction(){
 
       console.log("EJECUTANDO VERIFICACION")
@@ -125,7 +116,6 @@ function Index(props){
 
 
         console.log(response.data.data.status, "STATUS")
-
 
         if(response.data.data.status == "PENDING"){
           verifyTransaction()
@@ -191,7 +181,7 @@ function Index(props){
               lineHeight : 25,
               fontSize: 19,
               textAlign: "center"
-            }}>Por favor confirma la transacción en tu celular cuando te llege la <Text style={{fontWeight : "bold"}}>Notificacion</Text>. Si no te ha llegado, verifica que tengas Nequi instalado en tu celular y que ya estés registrado</Text>
+            }}>Por favor confirma la transacción en tu celular cuando te llege la <Text style={{fontWeight : "bold", color: 'black'}}>Notificacion</Text>. Si no te ha llegado, verifica que tengas Nequi instalado en tu celular y que ya estés registrado</Text>
         </View>)
     }
 
@@ -205,7 +195,7 @@ function Index(props){
 
             <ActivityIndicator size="large" color="#0093d9" />
             <Text style={{
-
+              color: 'black'
             }}>Estamos procesando tu pago . . .</Text>
         </View>)
     }
@@ -291,53 +281,50 @@ function Index(props){
     }
 
 
-
-
       return(
+            <View style={styles.container}>
+              <StatusBar backgroundColor="#fff" barStyle= "dark-content"/>
+              <View style={styles.header}>
 
-        <View style={styles.container}>
-            <StatusBar backgroundColor="#fff" barStyle= "dark-content"/>
-            <View style={styles.header}>
-
-                <View  style={styles.ItemsHeaderFlex}>
-                    <View>
-                        <Image
-                            style={styles.profile}
-                            source={{
-                            uri: 'https://image.flaticon.com/icons/png/512/306/306473.png',
-                            }}/>
-                    </View>
-                </View>
+                  <View  style={styles.ItemsHeaderFlex}>
+                      <View>
+                          <Image
+                              style={styles.profile}
+                              source={{
+                              uri: 'https://image.flaticon.com/icons/png/512/306/306473.png',
+                              }}/>
+                      </View>
+                  </View>
 
 
-                <View><Text style={styles.tittleHeader}>Resumen del pago</Text></View>
-                <View><Text style={styles.SubtittleHeader}>Confirma y procesa tu pago de {props.route.params.payment_concept}.</Text></View>
-                <View><Text style={styles.SubtittlePrice}>COP <Text style={styles.Price}>{props.route.params.amount_in_cents}</Text></Text></View>
-            </View>
+                  <View><Text style={styles.tittleHeader}>Resumen del pago</Text></View>
+                  <View><Text style={styles.SubtittleHeader}>Confirma y procesa tu pago de {props.route.params.payment_concept}.</Text></View>
+                  <View><Text style={styles.SubtittlePrice}>COP <Text style={styles.Price}>{props.route.params.amount_in_cents}</Text></Text></View>
+              </View>
             
 
-            <ScrollView style={styles.scrollView}>
-                  
-                <View style={styles.card}>
-
-                            
-                      {
-                        MessageError &&
-                        <Text>{MessageError}</Text>
-                      }
+              <ScrollView style={styles.scrollView}>
                     
-                    <Text style={styles.card_item}><Text style={styles.card_item_bold}>Concepto</Text>   : {props.route.params.payment_concept}</Text>
-                    <Text style={styles.card_item}><Text style={styles.card_item_bold}>Referencia :</Text> {RefferedPay}</Text>
-                    <Text style={styles.card_item}><Text style={styles.card_item_bold}>Monto :</Text> {currencyFormat(props.route.params.amount_in_cents)}</Text>
+                  <View style={styles.card}>
+
+                              
+                        {
+                          MessageError &&
+                          <Text>{MessageError}</Text>
+                        }
+                      
+                      <Text style={styles.card_item}><Text style={styles.card_item_bold}>Concepto</Text>: {props.route.params.payment_concept}</Text>
+                      <Text style={styles.card_item}><Text style={styles.card_item_bold}>Referencia: </Text> {RefferedPay}</Text>
+                      <Text style={styles.card_item}><Text style={styles.card_item_bold}>Monto: </Text> {currencyFormat(props.route.params.amount_in_cents)}</Text>
 
 
-                    <TouchableOpacity style={styles.loginBtn} onPress={()=>GotoPay()}   >
-                      <Text style={styles.loginText}>Pagar</Text>
-                    </TouchableOpacity>
+                      <TouchableOpacity style={styles.loginBtn} onPress={()=>GotoPay()}   >
+                        <Text style={styles.loginText}>Pagar</Text>
+                      </TouchableOpacity>
 
-                </View>
-            </ScrollView>
-        </View>
+                  </View>
+              </ScrollView>
+            </View>
     )
 
 
@@ -354,7 +341,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         backgroundColor: 'white',
         paddingBottom: 10,
-        width: "100%"
+        width: "100%",
+        alignItems: 'center'
     },
 
     menu: {
@@ -412,15 +400,16 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
         marginBottom: 10,
-        marginTop: 10
+        marginTop: 10,
+        color: 'black'
     },
 
     SubtittleHeader:{
-        color: '#777'
+        color: 'black'
     },
 
     SubtittlePrice : {
-        color: '#0093d9',
+        color: '#1B7BCC',
         fontSize: 20,
         marginTop: 10
     },
@@ -443,14 +432,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginTop: 30,
         width: "100%",
+        alignItems: 'center'
     },
 
     card_item : {
-      padding : 7
+      padding : 7,
+      color: 'black'
     },  
 
     card_item_bold : {
-      fontWeight : "bold"
+      fontWeight : "bold",
+      color: 'black'
     },
 
     card_content_title : {
@@ -461,8 +453,8 @@ const styles = StyleSheet.create({
 
 
       loginBtn:{
-        width:"100%",
-        backgroundColor:"#0093d9",
+        width:"80%",
+        backgroundColor:"#1B7BCC",
         borderRadius:25,
         height:50,
         alignItems:"center",
@@ -595,15 +587,17 @@ const styles = StyleSheet.create({
       title_succesfull :{
         fontSize: 20,
         fontWeight : "bold",
-        padding: 10
+        padding: 10,
+        color: 'black'
       },
       title : {
         fontWeight: "bold",
-        color : "#0093d9",
+        color : "#1B7BCC",
         padding: 5
       },
       item_succesfull : {
-        padding: 5
+        padding: 5,
+        color: 'black'
       },
       item_succesfull_bold : {
         fontWeight :  "bold"

@@ -78,11 +78,11 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
 
   return (
     <>
-        <Text style={{fontSize: 13, opacity: .5, marginTop: 6}}>Agregar médico cirujano y Cirujanos plasticos involucrados en la operación</Text>
+        <Text style={{fontSize: 13, opacity: .5, marginTop: 6, color: 'black'}}>Agregar médico cirujano y Cirujanos plasticos involucrados en la operación</Text>
         <InputAddDoctors value={valueDoctor} onChangeText={text => setValueDoctor(text)}/>
         <View style={styles.inputDoctorsFilter_container}>
             {filter.length !== 0 && valueDoctor !== '' ?
-                <ScrollView style={styles.inputDoctorsFilter}>
+                <ScrollView nestedScrollEnabled={true} style={styles.inputDoctorsFilter}>
                     {filter.map((element) => {
                         return (
                             <TouchableOpacity style={styles.inputDoctorsFilter_button} key={element.id} onPress={() => nameSelected({element})}>
@@ -117,7 +117,7 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
                             <View key={index} style={styles.doctorAddContainer_}>
                                  <View style={styles.doctorAddContainer_elements}>
                                     <View style={styles.doctorAdd}>
-                                        <Text>{data.name}</Text>
+                                        <Text style={{color: 'black'}}>{data.name}</Text>
                                     </View>
                                     <View style={styles.doctorAdd_delete}>
                                         <TouchableOpacity style={styles.doctorAdd_deleteButton} onPress={() => deleteDoctor(data)}>
@@ -132,18 +132,18 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
             }
         </View>
         <Text style={styles.formCoberturaJuridica_headerTitlesInfoPaciente}>Paciente</Text>
-        <InputFormCoberturaJuridica fieldName='fullNameP' title='Nombre' placeholder='Nombre Completo' icon={<User color='black' variant='Linear' size={20} />} />
-        <InputFormCoberturaJuridica fieldName='identificationP' title='Identificación' placeholder='Número de Identificación' icon={<Hashtag color='black' variant='Linear' size={20} />} />
-        <InputFormCoberturaJuridica fieldName='directionP' title='Dirección' placeholder='Dirección' icon={<Book1 color='black' variant='Linear' size={20} />} />
-        <InputFormCoberturaJuridica fieldName='phoneP' title='Teléfono' placeholder='Número de Teléfono' icon={<Hashtag color='black' variant='Linear' size={20} />} />
+        <InputFormCoberturaJuridica fieldName='fullNameP' title='Nombre' placeholder='Nombre Completo' icon={<User color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
+        <InputFormCoberturaJuridica fieldName='identificationP' title='Identificación' placeholder='Número de Identificación' icon={<Hashtag color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
+        <InputFormCoberturaJuridica fieldName='directionP' title='Dirección' placeholder='Dirección' icon={<Book1 color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
+        <InputFormCoberturaJuridica fieldName='phoneP' title='Teléfono' placeholder='Número de Teléfono' icon={<Hashtag color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
         <Text style={styles.formCoberturaJuridica_headerTitlesInfo}>Institución donde se realiza la investigación quirúrgica y/o tratamiento estético</Text>
-        <InputFormCoberturaJuridica fieldName='nitC' title='Nit' placeholder='Nit' icon={<Hashtag color='black' variant='Linear' size={20} />} />
-        <InputFormCoberturaJuridica fieldName='directionC' title='Dirección' placeholder='Dirección' icon={<Book1 color='black' variant='Linear' size={20} />} />
-        <InputFormCoberturaJuridica fieldName='cityC' title='Ciudad' placeholder='Ciudad' icon={<Book color='black' variant='Linear' size={20} />} />
+        <InputFormCoberturaJuridica fieldName='nitC' title='Nit' placeholder='Nit' icon={<Hashtag color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
+        <InputFormCoberturaJuridica fieldName='directionC' title='Dirección' placeholder='Dirección' icon={<Book1 color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
+        <InputFormCoberturaJuridica fieldName='cityC' title='Ciudad' placeholder='Ciudad' icon={<Book color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} />
         <Text style={styles.formCoberturaJuridica_headerTitlesInfo}>Procedimientos quirúrgicos y/o estéticos realizados</Text>
-        <Text style={{fontSize: 12, opacity: .5, marginTop: 2}}>Tipo de Procedimiento</Text>
-        <Text style={{marginTop: 7, fontWeight: '600'}}>{procedureTipe}</Text>
-        <InputFormCoberturaJuridica fieldName='datePro' title='Fecha Intervención' placeholder={dateProFirst.toLocaleDateString()} icon={<Calendar color='black' variant='Linear' size={20} />} onPressIn={() => setDateProOpen(!dateProOpen)} />
+        <Text style={{fontSize: 12, opacity: .5, marginTop: 2, color: 'black'}}>Tipo de Procedimiento</Text>
+        <Text style={{marginTop: 7, fontWeight: '600', color: 'black'}}>{procedureTipe}</Text>
+        <InputFormCoberturaJuridica fieldName='datePro' title='Fecha Intervención' placeholder={dateProFirst.toLocaleDateString()} icon={<Calendar color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} onPressIn={() => setDateProOpen(!dateProOpen)} />
         <DatePicker
             {...props}
             modal
@@ -161,7 +161,7 @@ const CoberturaJuridicaForm = ({ procedureTipe, setDoctorSelected, doctorSelecte
                 setDateProOpen(false)
             }}
         />
-        <InputFormCoberturaJuridica  fieldName='timePro' title='Hora Intervención' placeholder={timeProFirst.toLocaleTimeString()} icon={<Clock color='black' variant='Linear' size={20} />} onPressIn={() => setTimeProOpen(!timeProOpen)} />
+        <InputFormCoberturaJuridica  fieldName='timePro' title='Hora Intervención' placeholder={timeProFirst.toLocaleTimeString()} icon={<Clock color='black' variant='Linear' size={20} style={{marginVertical: 8}} />} onPressIn={() => setTimeProOpen(!timeProOpen)} />
         <DatePicker
             {...props}
             modal
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
         marginTop: -10,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
+        elevation: 5
     },
     inputDoctorsFilter_button: {
         justifyContent: 'center',
@@ -222,7 +223,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     inputDoctorsFilter_buttonText: {
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        color: 'black'
     },
     inputDoctorsFilter_buttonAdd: {
         width: '100%',
@@ -288,11 +290,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
         marginTop: 10,
-        marginBottom: 5
+        marginBottom: 5,
+        color: 'black'
     },
     formCoberturaJuridica_headerTitlesInfo: {
         marginVertical: 5,
-        fontWeight: '600'
+        fontWeight: '600',
+        color: 'black'
     },
     formCoberturaJuridica_button: {
         width: '80%',

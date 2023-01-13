@@ -29,6 +29,11 @@ const ShoppingCart = () => {
       headerTitle: 'Carrito de Compra',
       headerTintColor: 'black',
       headerBackTitleVisible: false,
+      //for android
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        fontSize: 16
+      },
     })
     sumaPrice()
   }, [navigation, shopping])
@@ -43,11 +48,11 @@ const ShoppingCart = () => {
           <View style={{width: '80%', height: 120, justifyContent: 'center'}}>
             <View style={{width: '100%', height: '80%', justifyContent: 'space-between'}}>
               <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text>Pagar</Text>
-                <Text>{total}.000</Text>
+                <Text style={{color: 'black'}}>Pagar</Text>
+                <Text style={{color: 'black'}}>{total}.000</Text>
               </View>
               <View style={{alignItems: 'center'}}>
-                <TouchableOpacity style={styles.shoppingCart_button} onPress={() => navigation.navigate('PaimentMethod', {total: total, car: false})}>
+                <TouchableOpacity style={styles.shoppingCart_button} onPress={() => navigation.navigate('PaimentData', {total: total, car: false})}>
                   <Text style={{color: 'white', fontSize: 14, fontWeight: '600'}}>Ir a Pagar</Text>
                 </TouchableOpacity>
               </View>
@@ -56,7 +61,7 @@ const ShoppingCart = () => {
         </>
         :
         <View style={{alignItems: 'center', marginTop: 100}}>
-          <Text>Carrito de compra vacío</Text>
+          <Text style={{color: 'black'}}>Carrito de compra vacío</Text>
         </View>
       }
     </View>
@@ -84,5 +89,6 @@ const styles = StyleSheet.create({
     shadowOffset: {height: 4},
     shadowColor: 'black',
     shadowOpacity: 0.4,
+    elevation: 5
   }
 })

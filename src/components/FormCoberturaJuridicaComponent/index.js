@@ -39,16 +39,16 @@ const FormCoberturaJuridicaComponent = ({ id, plan, price, procedureTipe, nameC,
     <BottomSheetModalProvider>
         <ScrollView style={styles.formCoberturaJuridica_scrollView} showsVerticalScrollIndicator={false}>
                 <View style={styles.formCoberturaJuridica_numberCoberture}>
-                    <Text>Cobertura Jurídica Nro</Text>
-                    <Text>0321</Text>
+                    <Text style={{color: 'black'}}>Cobertura Jurídica Nro</Text>
+                    <Text style={{color: 'black'}}>0321</Text>
                 </View>
-                <Text>Fecha de expedición - Vigencia</Text>
+                <Text style={{color: 'black'}}>Fecha de expedición - Vigencia</Text>
                 <View style={styles.formCoberturaJuridica_headerdate}>
-                    <Text>Desde</Text>
+                    <Text style={{color: 'black'}}>Desde</Text>
                     <Text style={styles.formCoberturaJuridica_headerdate_}>{localeDate}</Text>
                 </View>
                 <View style={styles.formCoberturaJuridica_headerdate}>
-                    <Text>Hasta</Text>
+                    <Text style={{color: 'black'}}>Hasta</Text>
                     <Text style={styles.formCoberturaJuridica_headerdate_}>{ultil}</Text>
                 </View>
                 <Text style={styles.formCoberturaJuridica_headerTitle}>Beneficiario</Text>
@@ -101,12 +101,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     formCoberturaJuridica_headerdate_: {
-        marginLeft: 10
+        marginLeft: 10,
+        color: 'black'
     },
     formCoberturaJuridica_headerTitle: {
         fontSize: 18,
         fontWeight: '600',
-        marginTop: 10,
+        marginTop: 5,
+        color: 'black'
     },
 
     //Inputs Date and time

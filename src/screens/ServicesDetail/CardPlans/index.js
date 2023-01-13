@@ -63,21 +63,45 @@ const CardPlans = ({
         {titleDescription}
       </Text>
       <View style={styles.servicesDetail_containerDescription}>
-        <ScrollView style={{maxHeight: 160}}>
+        <ScrollView style={{height: '39%'}}>
           <Text style={{color: 'black', fontSize: 12}}>{description}</Text>
         </ScrollView>
-        <View style={{width: "100%", padding: 10}}>
+        <View style={{width: "100%", padding: 5}}>
           <View style={styles.servicesDetail_containerTermsAndConditions}>
             {accept === false ? (
               <TouchableOpacity onPress={() => setAccept(!accept)}>
-                <Record size={25} color="#1B7BCC" />
+                <Record size={22} color="#1B7BCC" />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={() => setAccept(!accept)}>
-                <RecordCircle size={25} color="#1B7BCC" />
+                <RecordCircle size={22} color="#1B7BCC" />
               </TouchableOpacity>
             )}
-            <View style={styles.servicesDetail_containerPrice}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{marginLeft: 5, fontSize: 12, color: 'black'}}>Acepto </Text>
+              <TouchableOpacity
+                onPress={handlerModal}
+                style={styles.servicesDetail_containerTermsAndConditionsText}>
+                <Text style={{fontSize: 12, color: 'black'}}>términos y condiciones</Text>
+              </TouchableOpacity>
+              <BottomSheetModal
+                ref={bottomSheetModalTermRef}
+                index={0}
+                snapPoints={snapModalPoint}
+                backgroundStyle={{
+                  borderRadius: 30,
+                  shadowOffset: {height: -3},
+                  shadowColor: 'black',
+                  shadowOpacity: 0.4,
+                }}>
+                <TermsAndConditionsCobertura
+                  setAccept={setAccept}
+                  bottomSheetModalTermRef={bottomSheetModalTermRef}
+                />
+              </BottomSheetModal>
+            </View>
+          </View>
+          <View style={styles.servicesDetail_containerPrice}>
               <Text style={styles.servicesDetail_containerPriceText}>
                 ${price}
               </Text>
@@ -90,30 +114,6 @@ const CardPlans = ({
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
-          <View style={{flexDirection: 'row', marginTop: 10}}>
-            <Text style={{marginLeft: 5}}>Acepto </Text>
-            <TouchableOpacity
-              onPress={handlerModal}
-              style={styles.servicesDetail_containerTermsAndConditionsText}>
-              <Text>términos y condiciones</Text>
-            </TouchableOpacity>
-            <BottomSheetModal
-              ref={bottomSheetModalTermRef}
-              index={0}
-              snapPoints={snapModalPoint}
-              backgroundStyle={{
-                borderRadius: 30,
-                shadowOffset: {height: -3},
-                shadowColor: 'black',
-                shadowOpacity: 0.4,
-              }}>
-              <TermsAndConditionsCobertura
-                setAccept={setAccept}
-                bottomSheetModalTermRef={bottomSheetModalTermRef}
-              />
-            </BottomSheetModal>
-          </View>
         </View>
       </View>
     </>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     color: 'black'
   },
   servicesDetail_containerDescription: {
-    marginBottom: 150 //Pendiente por revisar
+    marginBottom: 110 //Pendiente por revisar
   },
   servicesDetail_containerTermsAndConditions: {
     flexDirection: 'row',
@@ -143,15 +143,15 @@ const styles = StyleSheet.create({
 
   servicesDetail_containerPrice: {
     flexDirection: 'row',
-    width: '95%',
+    width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: 2,
   },
   servicesDetail_containerPriceText: {
     fontSize: 25,
     fontWeight: '500',
     color: '#1B7BCC',
-    marginLeft: 10,
   },
   servicesDetail_containerPriceButton: {
     width: 100,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   servicesDetail_containerPriceButtonText: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: '800',
   },
 });

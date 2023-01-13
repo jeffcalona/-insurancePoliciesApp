@@ -1,5 +1,5 @@
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Profile as ProfileIcon, ShoppingCart } from 'iconsax-react-native'
 import CoberturaLogoWhite from '../../Assets/Icons/CoberturaLogoWhite.png'
@@ -26,6 +26,7 @@ import CasaLogoBlue from '../../Assets/Icons/CasaLogoBlue.png'
 import ServicesCardScreen from '../../components/ServicesCardScreen'
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import Profile from '../Profile'
+import { AuthContext } from '../../Context/AuthContext'
 
 const servicess = [
   {
@@ -193,6 +194,7 @@ const ServicesScreen = () => {
   const Navigation = useNavigation()
   const bottomSheetModalProfileRef = useRef(null)
   const snapModalPoint = ["100"]
+  const {shopping} = useContext(AuthContext)
 
   const handlerModal = () => {
     bottomSheetModalProfileRef.current?.present()
@@ -206,8 +208,15 @@ const ServicesScreen = () => {
         </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")}>
-            <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
+        <TouchableOpacity onPress={() => Navigation.navigate("ShoppingCart")} style={{position: 'relative'}}>
+          <ShoppingCart color="black" variant="Linear" size={30} style={{ marginRight: 20 }} />
+          {shopping.length > 0 ?
+            <View style={{position: 'absolute', right: 10, top: -7, backgroundColor: '#1B7BCC', height: 22, width: 22, borderRadius: 50, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{color: 'white', fontSize: 12}}>{shopping.length}</Text>
+            </View>
+            :
+            null
+          }
         </TouchableOpacity>
       ),
       headerTitle: 'Agregar Servicios',
@@ -221,7 +230,7 @@ const ServicesScreen = () => {
         fontSize: 16
       },
     })
-  }, [Navigation])
+  }, [Navigation, shopping])
 
   return (
     <BottomSheetModalProvider>

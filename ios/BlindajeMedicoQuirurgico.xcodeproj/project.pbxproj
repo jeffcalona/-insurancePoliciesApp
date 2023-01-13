@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BlindajeMedicoQuirurgicoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BlindajeMedicoQuirurgicoTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-BlindajeMedicoQuirurgico.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-BlindajeMedicoQuirurgico.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E90B3BAC43861B099F2AD1F5 /* libPods-BlindajeMedicoQuirurgico.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8099AB9AE6BC57079D104EB7 /* libPods-BlindajeMedicoQuirurgico.a */; };
+		F100E82552001FC5D2C0555E /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B9BB12F4F48FCD39BE60B /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +36,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BlindajeMedicoQuirurgico/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BlindajeMedicoQuirurgico/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BlindajeMedicoQuirurgico/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico.debug.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico.release.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-BlindajeMedicoQuirurgico.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlindajeMedicoQuirurgico.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B5B9BB12F4F48FCD39BE60B /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5868977D0A4A0EED9C0E6F /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71C05174024AAAE6C0C79D15 /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico.debug.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico.debug.xcconfig"; sourceTree = "<group>"; };
+		8099AB9AE6BC57079D104EB7 /* libPods-BlindajeMedicoQuirurgico.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlindajeMedicoQuirurgico.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BlindajeMedicoQuirurgico/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig"; sourceTree = "<group>"; };
+		C2A085CD8A54CB7E3941A847 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico.release.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico.release.xcconfig"; sourceTree = "<group>"; };
+		DD318324D949286651111AF7 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig"; path = "Target Support Files/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a in Frameworks */,
+				F100E82552001FC5D2C0555E /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-BlindajeMedicoQuirurgico.a in Frameworks */,
+				E90B3BAC43861B099F2AD1F5 /* libPods-BlindajeMedicoQuirurgico.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-BlindajeMedicoQuirurgico.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */,
+				8099AB9AE6BC57079D104EB7 /* libPods-BlindajeMedicoQuirurgico.a */,
+				4B5B9BB12F4F48FCD39BE60B /* libPods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */,
+				71C05174024AAAE6C0C79D15 /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */,
+				C2A085CD8A54CB7E3941A847 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */,
+				6B5868977D0A4A0EED9C0E6F /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */,
+				DD318324D949286651111AF7 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BlindajeMedicoQuirurgicoTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				3B6A05501DC7764E3E89BB46 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				66A2B2420A6D3A33DF3E4D27 /* [CP] Embed Pods Frameworks */,
+				E3FA6E5B71EA37E952234626 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BlindajeMedicoQuirurgico" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				08C347A757D5CB1EA166FFB6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				41B6B0DF2B15B632515499B0 /* [CP] Embed Pods Frameworks */,
+				A51E4AE2B47F536A89C846BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,46 +266,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		08C347A757D5CB1EA166FFB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,7 +288,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		3B6A05501DC7764E3E89BB46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41B6B0DF2B15B632515499B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66A2B2420A6D3A33DF3E4D27 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,7 +344,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests/Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		A51E4AE2B47F536A89C846BE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +361,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlindajeMedicoQuirurgico/Pods-BlindajeMedicoQuirurgico-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		E3FA6E5B71EA37E952234626 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -430,7 +430,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */;
+			baseConfigurationReference = 6B5868977D0A4A0EED9C0E6F /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -457,7 +457,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */;
+			baseConfigurationReference = DD318324D949286651111AF7 /* Pods-BlindajeMedicoQuirurgico-BlindajeMedicoQuirurgicoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -481,7 +481,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */;
+			baseConfigurationReference = 71C05174024AAAE6C0C79D15 /* Pods-BlindajeMedicoQuirurgico.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -507,7 +507,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */;
+			baseConfigurationReference = C2A085CD8A54CB7E3941A847 /* Pods-BlindajeMedicoQuirurgico.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

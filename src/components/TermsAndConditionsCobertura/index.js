@@ -18,7 +18,7 @@ const TermsAndConditionsCobertura = ({ setAccept, bottomSheetModalTermRef }) => 
     <View style={{ width: '100%', height: '100%', alignItems: 'center' }}>
       <View style={styles.termsAndConditions}>
         <Text style={styles.termsAndConditions_title}>Términos y Condiciones / Política de Privacidad</Text>
-        <ScrollView style={{ maxHeight: 300 }}>
+        <ScrollView style={{ height: '60%' }}>
           <Text style={styles.termsAndConditions_containerTitle}>Los acuerdos legales expuestos a continuación rigen el uso que uste haga de la aplicación / Plataforma Blindaje Médico Quirúrgico y de los servicios que se deriven de la misma</Text>
           <TermsAndConditionsText />
         </ScrollView>
@@ -49,19 +49,21 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 18,
     fontWeight: '800',
-    marginBottom: 20
+    marginBottom: 20,
+    color: 'black'
   },
   termsAndConditions_containerTitle: {
     fontSize: 14,
     fontWeight: '600',
-    marginBottom: 10
+    marginBottom: 10,
+    color: 'black'
   },
   termsAndConditions_buttons: {
     width: '90%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 30
+    marginTop: 20
   },
   termsAndConditions_buttonsAccept: {
     width: 100,

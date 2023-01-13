@@ -11,22 +11,22 @@ const ShoppingSingleCart = ({ title, img, doctorOne, doctorTwo, patient, price, 
         </View>
         <View style={styles.shoppingSingleCart_content}>
           <View style={{width: '70%'}}>
-            <Text style={{fontSize: 16, fontWeight: '800', letterSpacing: -.5}}>{title}</Text>
-            <Text style={{fontSize: 12, fontWeight: '600'}}>Cirujano:</Text>
-            <Text style={{fontSize: 12, fontWeight: '300'}}>{doctorOne}</Text>
+            <Text style={{fontSize: 16, fontWeight: '800', letterSpacing: -.5, color: 'black'}}>{title}</Text>
+            <Text style={{fontSize: 12, fontWeight: '600', color: 'black'}}>Cirujano:</Text>
+            <Text style={{fontSize: 12, fontWeight: '300', color: 'black'}}>{doctorOne}</Text>
             {doctorTwo ?
-             <Text style={{fontSize: 12, fontWeight: '300'}}>{doctorTwo}</Text>
+             <Text style={{fontSize: 12, fontWeight: '300', color: 'black'}}>{doctorTwo}</Text>
              :
              null
             }
-            <Text style={{fontSize: 12, fontWeight: '600'}}>Paciente:</Text>
-            <Text style={{fontSize: 12, fontWeight: '300'}}>{patient}</Text>
+            <Text style={{fontSize: 12, fontWeight: '600', color: 'black'}}>Paciente:</Text>
+            <Text style={{fontSize: 12, fontWeight: '300', color: 'black'}}>{patient}</Text>
           </View>
           <View style={styles.shoppingSingleCart_contentRight}>
             <TouchableOpacity style={styles.shoppingSingleCart_contentRigthButton} onPress={onPress}>
               <Text style={{color: 'red', fontWeight: '800'}}>x</Text>
             </TouchableOpacity>
-            <Text>{price}</Text>
+            <Text style={{color: 'black'}}>{price}</Text>
           </View>
         </View>
       </View>
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     shadowOffset: {height: 4},
     shadowColor: 'black',
-    shadowOpacity: 0.4
+    shadowOpacity: 0.4,
+    elevation: 5
   },
   shoppingSingleCart_img: {
     backgroundColor: '#1B7BCC',
