@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/AuthContext'
 import { useNavigation } from '@react-navigation/native'
 
 const AuthComponentRegister = () => {
-    const {register} = useContext(AuthContext)
+    const {register, setLoadingScreen} = useContext(AuthContext)
     const navigation = useNavigation()
 
     const [name, setName] = useState(null)
@@ -16,7 +16,7 @@ const AuthComponentRegister = () => {
 
     const buttonRegister = () => {
         register(name, identification, email, password, password_confirmation)
-        navigation.goBack()
+        setLoadingScreen(true)
     }
 
   return (

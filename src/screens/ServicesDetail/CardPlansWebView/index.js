@@ -17,13 +17,10 @@ const CardPlansWebView = ({ titleDescription, description, price, backgroundImg,
   const onPressAdd = async () => {
     if(accept === true) {
       navigation.navigate('FormPolicies', { price: price, backgroundImg: backgroundImg, name: name, logoDetail: logoDetail, url: url})
-      
       await axios.post(`${REACT_APP_USERDATABASE}/update/trackingService/${name}`, {
         nameU: nameU,
         service: serviceU
       })
-
-
     } else {
       Alert.alert(
         "Acepta Términos y Condiciones",
@@ -45,7 +42,7 @@ const CardPlansWebView = ({ titleDescription, description, price, backgroundImg,
     <>
       <Text style={styles.servicesDetail_containerTitleDescription}>{titleDescription}</Text>
       <ScrollView style={styles.servicesDetail_containerDescription}>
-        <Text>{description}</Text>
+        <Text style={{color: 'black'}}>{description}</Text>
       </ScrollView>
       <View style={styles.servicesDetail_containerTermsAndConditions}>
         {accept === false ?
@@ -58,9 +55,9 @@ const CardPlansWebView = ({ titleDescription, description, price, backgroundImg,
           </TouchableOpacity>
         }
         <View style={{flexDirection: 'row'}}>
-          <Text style={{marginLeft: 5}}>Acepto </Text>
+          <Text style={{marginLeft: 5, color: 'black'}}>Acepto </Text>
           <TouchableOpacity onPress={handlerModal} style={styles.servicesDetail_containerTermsAndConditionsText}>
-            <Text>términos y condiciones</Text>
+            <Text style={{color: 'black'}}>términos y condiciones</Text>
           </TouchableOpacity>
           <BottomSheetModal ref={bottomSheetModalTermRef} index={0} snapPoints={snapModalPoint} backgroundStyle={{ borderRadius: 30, shadowOffset: {height: -3}, shadowColor: 'black', shadowOpacity: 0.4}}>
             <TermsAndConditionsCobertura setAccept={setAccept} bottomSheetModalTermRef={bottomSheetModalTermRef} />
@@ -83,10 +80,11 @@ const styles = StyleSheet.create({
   servicesDetail_containerTitleDescription: {
     fontSize: 16,
     fontWeight: '400',
-    marginBottom: 10
+    marginBottom: 10,
+    color: 'black'
   },
   servicesDetail_containerDescription: {
-    maxHeight: 350
+    maxHeight: 320
   },
   servicesDetail_containerTermsAndConditions: {
     marginTop: 20,

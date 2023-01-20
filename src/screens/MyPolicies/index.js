@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   myPolices_: {
-    width: '90%'
+    width: '90%',
+    height: '100%'
   }
 })

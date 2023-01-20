@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Profile as ProfileIcon, ShoppingCart } from 'iconsax-react-native'
 import CoberturaLogoWhite from '../../Assets/Icons/CoberturaLogoWhite.png'
@@ -27,6 +27,8 @@ import ServicesCardScreen from '../../components/ServicesCardScreen'
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import Profile from '../Profile'
 import { AuthContext } from '../../Context/AuthContext'
+//import axios from 'axios'
+// import {REACT_APP_USERDATABASE, REACT_APP_SERVER} from "@env"
 
 const servicess = [
   {
@@ -88,7 +90,7 @@ const servicess = [
     logoDetail: CoberturaLogoBlue,
     status: 'comprar',
     backgroundImg: BackgroundCoberturasJ,
-    url: ''
+    url: 'https://api.whatsapp.com/send?phone=573127813077&text=Hola,%20estoy%20interesado%20en%20adquirir%20un%20servicio%20de%20Complicaciones%20Postquirúrgicas'
   },
   {
     id: '3',
@@ -195,12 +197,22 @@ const ServicesScreen = () => {
   const bottomSheetModalProfileRef = useRef(null)
   const snapModalPoint = ["100"]
   const {shopping} = useContext(AuthContext)
-
+  
+  // const [services, setServices] = useState([])
+  
   const handlerModal = () => {
     bottomSheetModalProfileRef.current?.present()
   }
 
   useEffect(() => {
+
+    // const getServices = async () => {
+    //   await axios.get(`${REACT_APP_USERDATABASE}/trackingservice`).then((resp) => {
+    //     setServices(resp.data)
+    //   }).catch((err) => console.log(err))
+    // }
+    // getServices()
+
     Navigation.setOptions({
       headerLeft: () => (
         <TouchableOpacity onPress={handlerModal}>
@@ -230,6 +242,7 @@ const ServicesScreen = () => {
         fontSize: 16
       },
     })
+
   }, [Navigation, shopping])
 
   return (

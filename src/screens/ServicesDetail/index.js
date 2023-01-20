@@ -289,13 +289,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   servicesDetail_Title: {
-    marginTop: 85,
+    marginTop: 65,
     color: 'white',
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: '800',
     maxWidth: 280,
     textAlign: 'center',
-    lineHeight: 30,
+    lineHeight: 25,
   },
   servicesDetail_container: {
     height: '75%',

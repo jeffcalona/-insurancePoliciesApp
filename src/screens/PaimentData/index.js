@@ -1,4 +1,4 @@
-import { Imge, StyleSheet, View } from 'react-native'
+import { Imge, StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
@@ -10,7 +10,7 @@ import { AuthContext } from '../../Context/AuthContext'
 import LoadingScreen from '../LoadingScreen'
 
 const PaimentData = ({ route, ...props }) => {
-  const {setShopping, shopping} = useContext(AuthContext)
+  const {setShopping, shopping, setLoadingScreen, loadingScreen} = useContext(AuthContext)
   const [acceptance_token, setacceptance_token]  = useState(false)
   const [Terminos, setTerminos]  = useState("#")
   console.log('carrito de compra en paimentData: ', shopping)
@@ -33,6 +33,7 @@ const PaimentData = ({ route, ...props }) => {
   }, [])
 
     const payCobertura = (values) => {
+      setLoadingScreen(true)
       let price = 0;
         shopping.map((item)=>{
           console.log(item.price)
@@ -67,7 +68,7 @@ const PaimentData = ({ route, ...props }) => {
             "token": token_card,
             "installments": 1,
         }
-        
+
         navigation.navigate("PaymentSummary", {
           randomCode : Math.random(),
           amount_in_cents  : price,
@@ -75,7 +76,9 @@ const PaimentData = ({ route, ...props }) => {
           payment_method   : payment_method,
           data_card,
           acceptance_token : acceptance_token,
-      })
+        })
+
+        setLoadingScreen(false)
 
       }).catch(function (error) {
         console.log('Error al enviar formulario')
@@ -132,23 +135,28 @@ const PaimentData = ({ route, ...props }) => {
 
   return (
     <View style={styles.paimentData}>
-      <Formik 
-        initialValues={{
-            nameCard: "carlos Cardenas",
-            numCard: "4242424242424242",
-            expCard: "12/24",
-            cvcCard: "798"
-        }}
-        validationSchema={Yup.object({
-            nameCard: Yup.string().typeError('El campo es requerido').required('El campo es requerido'),
-            numCard: Yup.number().typeError('El campo debe ser de tipo numérico').required('El campo es requerido'),
-            expCard: Yup.string().typeError('El campo es requerido').required('El campo es requerido'),
-            cvcCard: Yup.number().typeError('El campo debe ser de tipo numérico').required('El campo es requerido')
-        })}
-        onSubmit={values => payCobertura(values)}
-      >
-        <FormPaimentData paimentVal={route.params?.price} />
-      </Formik>
+      {loadingScreen === true ?
+        <LoadingScreen />
+        :
+        <Formik 
+          initialValues={{
+              nameCard: "carlos Cardenas",
+              numCard: "4242424242424242",
+              expCard: "12/24",
+              cvcCard: "798"
+          }}
+          validationSchema={Yup.object({
+              nameCard: Yup.string().typeError('El campo es requerido').required('El campo es requerido'),
+              numCard: Yup.number().typeError('El campo debe ser de tipo numérico').required('El campo es requerido'),
+              expCard: Yup.string().typeError('El campo es requerido').required('El campo es requerido'),
+              cvcCard: Yup.number().typeError('El campo debe ser de tipo numérico').required('El campo es requerido')
+          })}
+          onSubmit={values => payCobertura(values)}
+        >
+          <FormPaimentData paimentVal={route.params?.price} />
+        </Formik>
+
+      }
     </View>
   )
 }

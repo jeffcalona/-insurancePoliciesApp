@@ -84,12 +84,27 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = (name, identification, email, password, password_confirmation) => {
-        setLoadingScreen(true)
         axios.post(`${REACT_APP_USERDATABASE}/register`, {
             name, identification, email, password, password_confirmation
         }).then(res => {
             console.log('usuario registrado')
+
+            axios.post(`${REACT_APP_USERDATABASE}/login`, {
+                email, password
+            }). then(res => {
+                let userData = res.data
+                setUserData(userData["0"])
+                setUserToken(userData.token)
+
+                AsyncStorage.setItem('userData', JSON.stringify(userData))
+                AsyncStorage.setItem('userToken', userData.token)
+
+            }).catch(e => {
+                console.log(e)
+            })
+
             setLoadingScreen(false)
+            
         }).catch(e => {
             console.log(e)
         })

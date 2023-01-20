@@ -1,24 +1,33 @@
 import { StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import AuthComponent from '../../components/AuthComponent'
 import AuthBackgroundImg from '../../Assets/Icons/AuthBackgroundImg.jpg'
 import AuthComponentRegister from '../../components/AuthComponentRegister'
+import { AuthContext } from '../../Context/AuthContext'
+import LoadingScreen from '../LoadingScreen'
 
 const Register = () => {
+  const {loadingScreen} = useContext(AuthContext)
 
   return (
     <ImageBackground source={AuthBackgroundImg} style={styles.authBackgroundImg}>
-      <View style={styles.login}>
-        <Text style={styles.login_title}>Blindaje Quirúrgico</Text>
-      </View>
-      <View style={styles.loginContent}>
-        <View style={styles.loginContent_}>
-          <AuthComponent autContentTitle='Nuevo Usuario' />
-          <ScrollView style={styles.loginContent_inputs} showsVerticalScrollIndicator={false}>
-            <AuthComponentRegister />
-          </ScrollView>
-        </View>
-      </View>
+      {loadingScreen === true ? 
+        <LoadingScreen />
+        :
+        <>
+          <View style={styles.login}>
+            <Text style={styles.login_title}>Blindaje Quirúrgico</Text>
+          </View>
+          <View style={styles.loginContent}>
+            <View style={styles.loginContent_}>
+              <AuthComponent autContentTitle='Nuevo Usuario' />
+              <ScrollView style={styles.loginContent_inputs} showsVerticalScrollIndicator={false}>
+                <AuthComponentRegister />
+              </ScrollView>
+            </View>
+          </View>
+        </>
+      }
     </ImageBackground>
   )
 }

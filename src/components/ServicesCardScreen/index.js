@@ -16,14 +16,16 @@ const ServicesCardScreen = ({ status, logo, name, description, price, id, descri
                     <View style={styles.servicesCardScreen_text_}>
                         <Text style={styles.servicesCardScreen_textTitle}>{name}</Text>
                         <Text style={styles.servicesCardScreen_textDescripcion}>{description}</Text>
-                        <Text style={styles.servicesCardScreen_textDesde}>Desde</Text>
-                        <Text style={styles.servicesCardScreen_textPrice}>
                             {id === '1' ?
-                                `${price} /p`
+                                <>
+                                    <Text style={styles.servicesCardScreen_textDesde}>Desde</Text>
+                                    <Text style={styles.servicesCardScreen_textPrice}>
+                                        {price}
+                                    </Text>
+                                </>
                                 :
-                                `${price} /m`
+                                null
                             }
-                        </Text>
                     </View>
                     {status === 'comprar' ? 
                         <TouchableOpacity onPress={() => navigation.navigate("DetailStack", { id: id, name: name, descriptionL: descriptionL, backgroundImg: backgroundImg, price: price, logo: logo, logoDetail: logoDetail, planes: planes, procedimientos: procedimientos, url: url })} style={styles.servicesCardCard_textActive}>

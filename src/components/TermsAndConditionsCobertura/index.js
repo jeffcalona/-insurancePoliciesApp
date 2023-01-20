@@ -28,7 +28,7 @@ const TermsAndConditionsCobertura = ({ setAccept, bottomSheetModalTermRef }) => 
           </TouchableOpacity>
           <View style={{ width: 100, height: 40, justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity onPress={noAcceptTerms} style={styles.termsAndConditions_buttonsNoAccept}>
-              <Text>Cancelar</Text>
+              <Text style={{color: 'black'}}>Cancelar</Text>
             </TouchableOpacity>
           </View>
         </View>

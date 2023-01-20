@@ -11,7 +11,7 @@ import Profile from '../Profile'
 import LoadingScreen from '../LoadingScreen'
 
 const Home = () => {
-  const {userData, shopping} = useContext(AuthContext)
+  const {userData, shopping, loadingScreen} = useContext(AuthContext)
   const Navigation = useNavigation()
   const bottomSheetModalProfileRef = useRef(null)
   const snapModalPoint = ["100"]
@@ -53,16 +53,22 @@ const Home = () => {
   }, [Navigation, shopping])
 
   return (
-    <BottomSheetModalProvider>
-      <BottomSheetModal ref={bottomSheetModalProfileRef} index={0} snapPoints={snapModalPoint}>
-        <Profile />
-      </BottomSheetModal>
-      <View style={styles.home}>
-        <Publicity />
-        <Services />
-        <Polizas />
-      </View>
-    </BottomSheetModalProvider>
+    <>
+      {loadingScreen === true ?
+        <LoadingScreen />
+        :
+        <BottomSheetModalProvider>
+          <BottomSheetModal ref={bottomSheetModalProfileRef} index={0} snapPoints={snapModalPoint}>
+            <Profile />
+          </BottomSheetModal>
+          <View style={styles.home}>
+            <Publicity />
+            <Services />
+            <Polizas />
+          </View>
+        </BottomSheetModalProvider>
+      }
+    </>
   )
 }
 
