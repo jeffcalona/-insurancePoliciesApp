@@ -49,25 +49,33 @@ const CoberturaJuridicaForm = ({
   const [dateProOpen, setDateProOpen] = useState(false);
   const [timeProOpen, setTimeProOpen] = useState(false);
 
+  const [load, setLoad] = useState(false);
+
   //add doctors state
   const [valueDoctor, setValueDoctor] = useState('');
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
-    console.log(`${REACT_APP_USERDATABASE}/cobertura/doctors`);
-    axios
-      .get(`${REACT_APP_USERDATABASE}/cobertura/doctors`)
-      .then(res => {
-        const newFilter = res.data.doctors.filter(elem => {
-          return elem.name
-            .toLowerCase()
-            .includes(valueDoctor.toLocaleLowerCase());
+    if (valueDoctor != '') {
+      console.log(`${REACT_APP_USERDATABASE}/cobertura/doctors`);
+      setLoad(true);
+      axios
+        .get(`${REACT_APP_USERDATABASE}/cobertura/doctors`)
+        .then(res => {
+          setLoad(false);
+          const newFilter = res.data.doctors.filter(elem => {
+            return elem.name
+              .toLowerCase()
+              .includes(valueDoctor.toLocaleLowerCase());
+          });
+          setLoad(false);
+          valueDoctor === '' ? setFilter([]) : setFilter(newFilter);
+        })
+        .catch(e => {
+          setLoad(false);
+          console.log(e);
         });
-        valueDoctor === '' ? setFilter([]) : setFilter(newFilter);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    }
   }, [valueDoctor]);
 
   const nameSelected = element => {
@@ -119,6 +127,7 @@ const CoberturaJuridicaForm = ({
       </Text>
       <InputAddDoctors
         value={valueDoctor}
+        load={load}
         onChangeText={text => setValueDoctor(text)}
       />
       <View style={styles.inputDoctorsFilter_container}>

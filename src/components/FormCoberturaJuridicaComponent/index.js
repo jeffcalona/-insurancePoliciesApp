@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
@@ -30,11 +30,13 @@ const FormCoberturaJuridicaComponent = ({
     return today;
   }
 
-  let isToDate = toDate(date, 30);
+  let isToDate = toDate(date, 3540);
 
   const buttonRegisterCoberturaJuridica = values => {
-    console.log({values});
-    return false;
+    if (doctorsSelectedId.length == 0) {
+      Alert.alert('Debe agregar al menos 1 médico');
+      return false;
+    }
     navigation.navigate('PaimentMethod', {
       id,
       plan,
@@ -59,8 +61,8 @@ const FormCoberturaJuridicaComponent = ({
         style={styles.formCoberturaJuridica_scrollView}
         showsVerticalScrollIndicator={false}>
         <View style={styles.formCoberturaJuridica_numberCoberture}>
-          <Text style={{color: 'black'}}>Cobertura Jurídica Nro</Text>
-          <Text style={{color: 'black'}}>0321</Text>
+          {/**<Text style={{color: 'black'}}>Cobertura Jurídica Nro</Text> */}
+          <Text style={{color: 'black'}}></Text>
         </View>
         <Text style={{color: 'black'}}>Fecha de expedición - Vigencia</Text>
         <View style={styles.formCoberturaJuridica_headerdate}>

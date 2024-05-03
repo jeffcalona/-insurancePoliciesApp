@@ -36,7 +36,7 @@ const servicess = [
     name: 'Cobertura Jurídica',
     description:
       'Es una herramienta de protección jurídica y judicial diseñada para usted, con el fin de blindar su actuar...',
-    price: '150.000',
+    price: '',
     logo: CoberturaLogoWhite,
     logoDetail: CoberturaLogoBlue,
     status: 'comprar',
