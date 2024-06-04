@@ -90,7 +90,7 @@ const Home = () => {
           </BottomSheetModal>
           <View style={styles.home}>
             <Publicity />
-            <Services />
+            {/**<Services /> */}
             <Polizas />
           </View>
         </BottomSheetModalProvider>

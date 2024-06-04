@@ -44,7 +44,7 @@ const ServicesDetail = ({route}) => {
       //for android
       headerTitleAlign: 'center',
       headerTitleStyle: {
-        fontSize: 16
+        fontSize: 16,
       },
     });
   }, [navigation]);
@@ -72,7 +72,7 @@ const ServicesDetail = ({route}) => {
           </ImageBackground>
         </View>
         <View style={styles.servicesDetail_container}>
-          {route.params?.procedimientos ?
+          {route.params?.procedimientos ? (
             <View style={styles.servicesDetail_container_}>
               <Text style={styles.servicesDetail_procedureTipeTitle}>
                 Seleccione el tipo de procedimiento
@@ -108,13 +108,14 @@ const ServicesDetail = ({route}) => {
               <Text style={styles.servicesDetail_containerTextTitle}>
                 Planes
               </Text>
-              {esteticoSelected === true ?
+              {esteticoSelected === true ? (
                 <View style={{height: '100%', paddingHorizontal: 5}}>
                   <View style={styles.servicesDetail_containerButtons}>
                     <TouchableOpacity
                       style={[
                         styles.servicesDetail_containerButton,
-                        {shadowOpacity: basicPlan ? 0 : 0.4},
+                        {shadowOpacity: basicPlan ? 0.4 : 0},
+                        {backgroundColor: basicPlan ? '#96C4EA' : '#999'},
                       ]}
                       onPress={handleBasicPlan}>
                       <Text style={styles.servicesDetail_containerButtonText}>
@@ -124,7 +125,8 @@ const ServicesDetail = ({route}) => {
                     <TouchableOpacity
                       style={[
                         styles.servicesDetail_containerButton,
-                        {shadowOpacity: !plusPlan ? 0.4 : 0},
+                        {shadowOpacity: !plusPlan ? 0 : 0.4},
+                        {backgroundColor: !plusPlan ? '#999' : '#96C4EA'},
                       ]}
                       onPress={handlePlusPlan}>
                       <Text style={styles.servicesDetail_containerButtonText}>
@@ -173,13 +175,14 @@ const ServicesDetail = ({route}) => {
                     />
                   )}
                 </View>
-              : (
+              ) : (
                 <View style={{height: '100%', paddingHorizontal: 5}}>
                   <View style={styles.servicesDetail_containerButtons}>
                     <TouchableOpacity
                       style={[
                         styles.servicesDetail_containerButton,
-                        {shadowOpacity: basicPlan ? 0 : 0.4},
+                        {shadowOpacity: basicPlan ? 0.4 : 0},
+                        {backgroundColor: basicPlan ? '#96C4EA' : '#999'},
                       ]}
                       onPress={handleBasicPlan}>
                       <Text style={styles.servicesDetail_containerButtonText}>
@@ -189,7 +192,8 @@ const ServicesDetail = ({route}) => {
                     <TouchableOpacity
                       style={[
                         styles.servicesDetail_containerButton,
-                        {shadowOpacity: !plusPlan ? 0.4 : 0},
+                        {shadowOpacity: !plusPlan ? 0 : 0.4},
+                        {backgroundColor: !plusPlan ? '#999' : '#96C4EA'},
                       ]}
                       onPress={handlePlusPlan}>
                       <Text style={styles.servicesDetail_containerButtonText}>
@@ -240,7 +244,7 @@ const ServicesDetail = ({route}) => {
                 </View>
               )}
             </View>
-            :
+          ) : (
             <View style={styles.servicesDetail_container_}>
               <View style={{height: '100%'}}>
                 <CardPlansWebView
@@ -257,7 +261,7 @@ const ServicesDetail = ({route}) => {
                 />
               </View>
             </View>
-          }
+          )}
         </View>
         <View style={styles.servicesDetail_logo}>
           <Image
@@ -267,8 +271,8 @@ const ServicesDetail = ({route}) => {
         </View>
       </View>
     </BottomSheetModalProvider>
-  )
-}
+  );
+};
 
 export default ServicesDetail;
 
@@ -317,7 +321,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
-    color: 'black'
+    color: 'black',
   },
   servicesDetail_procedureTipe: {
     width: '100%',
@@ -354,7 +358,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     paddingHorizontal: 5,
-    color: 'black'
+    color: 'black',
   },
   servicesDetail_containerButtons: {
     flexDirection: 'row',

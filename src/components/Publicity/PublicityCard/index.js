@@ -1,9 +1,31 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Linking,
+} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const PublicityCard = ({title, description, logo}) => {
+const PublicityCard = ({title, description, logo, id}) => {
   const navigation = useNavigation();
+
+  const openWhatsApp = () => {
+    const url =
+      'https://api.whatsapp.com/send?phone=573127813077&text=Hola,%20estoy%20interesado%20en%20adquirir%20un%20servicio%20de%20Complicaciones%20Postquirúrgicas';
+    Linking.canOpenURL(url)
+      .then(supported => {
+        if (!supported) {
+          console.log("Can't handle url: " + url);
+        } else {
+          return Linking.openURL(url);
+        }
+      })
+      .catch(err => console.error('An error occurred', err));
+  };
+
   return (
     <View style={styles.publicitya}>
       <View style={styles.publicityContent}>
@@ -17,7 +39,11 @@ const PublicityCard = ({title, description, logo}) => {
           <Image style={styles.publicityContent_logo} source={logo} />
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('AgregarServicios')}
+          onPress={() =>
+            id === '1'
+              ? navigation.navigate('AgregarServicios')
+              : openWhatsApp()
+          }
           style={styles.publicityContent_button}>
           <Text style={styles.publicityContent_buttonText}>Ver Más</Text>
         </TouchableOpacity>

@@ -18,6 +18,7 @@ const FormCoberturaJuridicaComponent = ({
   const [ultil, setUltil] = useState('');
 
   const [doctorSelected, setDoctorSelected] = useState([]);
+  const [proceduresSelected, setProceduresSelected] = useState([]);
   const [doctorsSelectedId, setDoctorsSelectedId] = useState([]);
 
   let date = new Date();
@@ -48,6 +49,7 @@ const FormCoberturaJuridicaComponent = ({
       nameC,
       logoIcon,
       car: true,
+      proceduresSelected,
     });
   };
 
@@ -116,7 +118,12 @@ const FormCoberturaJuridicaComponent = ({
             timePro: Yup.string().typeError('El campo es requerido'),
           })}
           onSubmit={(values, props, doctorSelected) =>
-            buttonRegisterCoberturaJuridica(values, props, doctorSelected)
+            buttonRegisterCoberturaJuridica(
+              values,
+              props,
+              doctorSelected,
+              proceduresSelected,
+            )
           }>
           <CoberturaJuridicaForm
             procedureTipe={procedureTipe}
@@ -124,6 +131,8 @@ const FormCoberturaJuridicaComponent = ({
             doctorSelected={doctorSelected}
             doctorsSelectedId={doctorsSelectedId}
             setDoctorsSelectedId={setDoctorsSelectedId}
+            proceduresSelected={proceduresSelected}
+            setProceduresSelected={setProceduresSelected}
           />
         </Formik>
       </ScrollView>

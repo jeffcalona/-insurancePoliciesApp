@@ -38,6 +38,7 @@ const Publicity = () => {
             title={item.title}
             description={item.description}
             logo={item.logo}
+            id={item.id}
           />
         )}
         showsHorizontalScrollIndicator={false}

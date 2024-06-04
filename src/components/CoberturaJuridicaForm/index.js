@@ -35,6 +35,8 @@ const CoberturaJuridicaForm = ({
   doctorSelected,
   setDoctorsSelectedId,
   doctorsSelectedId,
+  proceduresSelected,
+  setProceduresSelected,
 }) => {
   const {submitForm, ...props} = useFormikContext();
   //modal
@@ -119,18 +121,25 @@ const CoberturaJuridicaForm = ({
     setDoctorsSelectedId(newDoctorIdSelected);
   };
 
+  const addProcedure = () => {
+    setProceduresSelected([...proceduresSelected, props.values.procedureNames]);
+    props.values.procedureNames = '';
+  };
+
   return (
     <>
       <Text style={{fontSize: 13, opacity: 0.5, marginTop: 6, color: 'black'}}>
         Agregar médico cirujano y Cirujanos plasticos involucrados en la
         operación
       </Text>
-      <InputAddDoctors
+      {/**
+         * <InputAddDoctors
         value={valueDoctor}
         load={load}
         onChangeText={text => setValueDoctor(text)}
       />
-      <View style={styles.inputDoctorsFilter_container}>
+
+       <View style={styles.inputDoctorsFilter_container}>
         {filter.length !== 0 && valueDoctor !== '' ? (
           <ScrollView
             nestedScrollEnabled={true}
@@ -186,7 +195,9 @@ const CoberturaJuridicaForm = ({
           </View>
         ) : doctorSelected !== '' ? null : null}
       </View>
-      <View style={styles.doctorAddContainer}>
+
+
+       <View style={styles.doctorAddContainer}>
         {doctorSelected.length !== 0 && (
           <>
             {doctorSelected.map((data, index) => {
@@ -212,6 +223,27 @@ const CoberturaJuridicaForm = ({
           </>
         )}
       </View>
+         * 
+         * 
+         */}
+
+      <Text style={styles.formCoberturaJuridica_headerTitlesInfoPaciente}>
+        Médico
+      </Text>
+      <InputFormCoberturaJuridica
+        fieldName="fullNameMedico"
+        title="Nombre"
+        placeholder="Nombre Completo"
+        icon={
+          <User
+            color="black"
+            variant="Linear"
+            size={20}
+            style={{marginVertical: 8}}
+          />
+        }
+      />
+
       <Text style={styles.formCoberturaJuridica_headerTitlesInfoPaciente}>
         Paciente
       </Text>
@@ -313,12 +345,37 @@ const CoberturaJuridicaForm = ({
       <Text style={styles.formCoberturaJuridica_headerTitlesInfo}>
         Procedimientos quirúrgicos y/o estéticos realizados
       </Text>
-      <Text style={{fontSize: 12, opacity: 0.5, marginTop: 2, color: 'black'}}>
-        Tipo de Procedimiento
-      </Text>
-      <Text style={{marginTop: 7, fontWeight: '600', color: 'black'}}>
-        {procedureTipe}
-      </Text>
+
+      <InputFormCoberturaJuridica
+        fieldName="procedureNames"
+        title={`Tipo de Procedimiento ${procedureTipe}`}
+        placeholder=" Tipo de Procedimiento"
+        icon={
+          <Book
+            color="black"
+            variant="Linear"
+            size={20}
+            style={{marginVertical: 8}}
+          />
+        }
+      />
+
+      <TouchableOpacity
+        style={styles.inputDoctorsFilter_buttonAdd}
+        onPress={() => {
+          addProcedure();
+        }}>
+        <Text style={styles.inputDoctorsFilter_buttonAddText}>
+          Agregar Procedimiento
+        </Text>
+      </TouchableOpacity>
+
+      <View>
+        {proceduresSelected.map(item => {
+          return <Text>{item}</Text>;
+        })}
+      </View>
+
       <InputFormCoberturaJuridica
         fieldName="datePro"
         title="Fecha Intervención"
